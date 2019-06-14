@@ -16,9 +16,10 @@
     {% endifinstalled %}
 
     {% compress css %}
-        <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+        <link href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static "vendor/fontawesome-free/css/all.css" %}">
         <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
-        <link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">
+        <link rel="stylesheet" href="{% static "css/style.css" %}">
         {% if LANGUAGE_BIDI %}
             <link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}">
         {% endif %}
@@ -32,9 +33,10 @@
     {% endcompress %}
 
     {% compress js %}
-        <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
-        <script src="{% static "js/bootstrap.js" %}"></script>
-        <script src="{% static "js/bootstrap-extras.js" %}"></script>
+        <script src="{% static "vendor/jquery/jquery.js" %}"></script>
+        <script src="{% static "vendor/bootstrap/js/bootstrap.js" %}"></script>
+
+
         {% block extra_js %}{% endblock %}
     {% endcompress %}
 
@@ -49,14 +51,146 @@
 <body id="{% block body_id %}body{% endblock %}">
 
 
-<div class="container-fluid">
-    <h1>Podcast project starter</h1>
-    <code>Configurações iniciais do projeto</code>
+
+<!-- MOBILE MENU -->
+{% page_menu "pages/menus/mobile.html" %}
+
+<div class="app">
+    <!-- HEADER -->
+    {% include "includes/header.html" %}
+
+    <div style="margin-top: 30px;" class="main-content multiple-posts">
+         {% block main %}{% endblock %}
+
+{#        <h1>Podcasts recentes</h1>#}
+{#        <div class="podcast-container" style="">#}
+{##}
+{#            <!-- Item -->#}
+{#            <div class="podcast">#}
+{#                <div class="podcast-thumbnail" style="background-image:url('https://jornal.usp.br/wp-content/uploads/20160525_00_cerebro-300x135.jpg')"></div>#}
+{#                <div class="podcast-info">#}
+{#                    <h2>NeuroMat Podcast Intro</h2>#}
+{#                    <ul class="podcast-avaiablein-list">#}
+{#                        <li><a href="#"><i class="fab fa-spotify"></i></a></li>#}
+{#                        <li><a href="#"><i class="fab fa-itunes"></i></a></li>#}
+{#                        <li><a href="#"><i class="fas fa-play"></i></a></li>#}
+{#                    </ul>#}
+{#                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum molestias atque error.</p>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <!-- / Item -->#}
+{#            <!-- Item -->#}
+{#            <div class="podcast">#}
+{#                <div class="podcast-thumbnail" style="background-image:url('https://jornal.usp.br/wp-content/uploads/2019/04/20190415_00_Microchip-554x305.jpg')"></div>#}
+{#                <div class="podcast-info">#}
+{#                    <h2>NeuroMat Podcast Intro</h2>#}
+{#                    <ul class="podcast-avaiablein-list">#}
+{#                        <li><a href="#"><i class="fab fa-spotify"></i></a></li>#}
+{#                        <li><a href="#"><i class="fab fa-itunes"></i></a></li>#}
+{#                        <li><a href="#"><i class="fas fa-play"></i></a></li>#}
+{#                    </ul>#}
+{#                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum molestias atque error.</p>#}
+{#                </div>#}
+{#            </div>#}
+{#            <!-- / Item -->#}
+{#            <!-- Item -->#}
+{#            <div class="podcast">#}
+{#                <div class="podcast-thumbnail" style="background-image:url('https://www5.usp.br/wp-content/uploads/pesquisa-1.jpg')"></div>#}
+{#                <div class="podcast-info">#}
+{#                    <h2>NeuroMat Podcast Intro</h2>#}
+{#                    <ul class="podcast-avaiablein-list">#}
+{#                        <li><a href="#"><i class="fab fa-spotify"></i></a></li>#}
+{#                        <li><a href="#"><i class="fab fa-itunes"></i></a></li>#}
+{#                        <li><a href="#"><i class="fas fa-play"></i></a></li>#}
+{#                    </ul>#}
+{#                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum molestias atque error.</p>#}
+{#                </div>#}
+{#            </div>#}
+{#            <!-- / Item -->#}
+{#            <!-- Item -->#}
+{#            <div class="podcast">#}
+{#                <div class="podcast-thumbnail" style="background-image:url('https://www5.usp.br/wp-content/uploads/pesq_prp.jpg')"></div>#}
+{#                <div class="podcast-info">#}
+{#                    <h2>NeuroMat Podcast Intro</h2>#}
+{#                    <ul class="podcast-avaiablein-list">#}
+{#                        <li><a href="#"><i class="fab fa-spotify"></i></a></li>#}
+{#                        <li><a href="#"><i class="fab fa-itunes"></i></a></li>#}
+{#                        <li><a href="#"><i class="fas fa-play"></i></a></li>#}
+{#                    </ul>#}
+{#                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum molestias atque error.</p>#}
+{#                </div>#}
+{#            </div>#}
+{#            <!-- / Item -->#}
+{#            <!-- Item -->#}
+{#            <div class="podcast">#}
+{#                <div class="podcast-thumbnail" style="background-image:url('https://jornal.usp.br/wp-content/uploads/2019/04/20190415_00_Microchip-554x305.jpg')"></div>#}
+{#                <div class="podcast-info">#}
+{#                    <h2>NeuroMat Podcast Intro</h2>#}
+{#                    <ul class="podcast-avaiablein-list">#}
+{#                        <li><a href="#"><i class="fab fa-spotify"></i></a></li>#}
+{#                        <li><a href="#"><i class="fab fa-itunes"></i></a></li>#}
+{#                        <li><a href="#"><i class="fas fa-play"></i></a></li>#}
+{#                    </ul>#}
+{#                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum molestias atque error.</p>#}
+{#                </div>#}
+{#            </div>#}
+{#            <!-- / Item -->#}
+{#        </div>#}
+    </div>
+</div>
+<!-- SINGLE POST MODEL -->
+<div class="main-content single-post-line" style="display:none;">
+    <h1>Podcasts recentes (Modelo um post por linha)</h1>
+    <div class="podcast-container">
+        <!-- Item -->
+        <div class="podcast">
+            <div class="podcast-thumbnail" style="background:url('https://jornal.usp.br/wp-content/uploads/20160525_00_cerebro-300x135.jpg')"></div>
+            <div class="podcast-info">
+                <h2>NeuroMat Podcast Intro</h2>
+                <ul class="podcast-avaiablein-list">
+                    <li><a href="#"><i class="fab fa-spotify"></i></a></li>
+                    <li><a href="#"><i class="fab fa-itunes"></i></a></li>
+                    <li><a href="#"><i class="fas fa-play"></i></a></li>
+                </ul>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum molestias atque error.</p>
+            </div>
+        </div>
+        <!-- / Item -->
+        <!-- Item -->
+        <div class="podcast">
+            <div class="podcast-thumbnail" style="background:url('https://jornal.usp.br/wp-content/uploads/2019/04/20190415_00_Microchip-554x305.jpg')"></div>
+            <div class="podcast-info">
+                <h2>NeuroMat Podcast Intro</h2>
+                <ul class="podcast-avaiablein-list">
+                    <li><a href="#"><i class="fab fa-spotify"></i></a></li>
+                    <li><a href="#"><i class="fab fa-itunes"></i></a></li>
+                    <li><a href="#"><i class="fas fa-play"></i></a></li>
+                </ul>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum molestias atque error.</p>
+            </div>
+        </div>
+        <!-- / Item -->
+
+    </div>
+</div>
+</div>
+
+
+<div id="searchBoxContainer" class="search-box-container">
+    <div class="search-form">
+        <div id="closeBtn" class="close-btn"> <i class="fas fa-times-circle"></i></div>
+        <h2>Busque por um Podcast publicado</h2>
+        <input type="text" placeholder="Insira o nome do podcast ou assunto relacionado.." />
+        <button>Buscar</button>
+    </div>
 </div>
 
 {% block footer_js %}
     {% include "includes/footer_scripts.html" %}
 {% endblock %}
+
+<script type="text/javascript" src="{%  static "js/app.js" %}"></script>
 
 </body>
 </html>
