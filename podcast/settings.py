@@ -57,25 +57,30 @@ from django.utils.translation import ugettext_lazy as _
 # field instance. When specifying the field class, the path
 # ``django.models.db.`` can be omitted for regular Django model fields.
 #
-# EXTRA_MODEL_FIELDS = (
-#     (
-#         # Dotted path to field.
-#         "mezzanine.blog.models.BlogPost.image",
-#         # Dotted path to field class.
-#         "somelib.fields.ImageField",
-#         # Positional args for field class.
-#         (_("Image"),),
-#         # Keyword args for field class.
-#         {"blank": True, "upload_to": "blog"},
-#     ),
-#     # Example of adding a field to *all* of Mezzanine's content types:
-#     (
-#         "mezzanine.pages.models.Page.another_field",
-#         "IntegerField", # 'django.db.models.' is implied if path is omitted.
-#         (_("Another name"),),
-#         {"blank": True, "default": 1},
-#     ),
-# )
+EXTRA_MODEL_FIELDS = (
+    # CAMPO PARA A URL DO VÍDEO DE MATERIAL EXTRA
+    (
+        "mezzanine.blog.models.BlogPost.video",
+        "embed_video.fields.EmbedVideoField",
+        ("Vídeo (Material extra ou relacionado ao Podcast",),
+        {"blank": True, "null": True},
+    ),
+    # FILE INPUT PARA ARQUIVO DE AUDIO DO PODCAST
+    (
+        "mezzanine.blog.models.BlogPost.podcastfile",
+        "FileField",
+        ("Carregue o arquivo de audio",),
+        {"upload_to": "uploads", "max_length": 150, "default": ""},
+    ),
+
+    # # Example of adding a field to *all* of Mezzanine's content types:
+    # (
+    #     "mezzanine.pages.models.Page.another_field",
+    #     "IntegerField", # 'django.db.models.' is implied if path is omitted.
+    #     (_("Another name"),),
+    #     {"blank": True, "default": 1},
+    # ),
+)
 
 # Setting to turn on featured images for blog posts. Defaults to False.
 #
@@ -198,7 +203,7 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-            os.path.join(PROJECT_ROOT, "templates")
+            os.path.join(PROJECT_ROOT, "theme/../templates")
         ],
         "OPTIONS": {
             "context_processors": [
@@ -234,6 +239,8 @@ if DJANGO_VERSION < (1, 9):
 ################
 
 INSTALLED_APPS = (
+    "embed_video",
+    "theme",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -340,3 +347,10 @@ except ImportError:
     pass
 else:
     set_dynamic_settings(globals())
+
+####################
+# CUSTOM SETTINGS #
+####################
+
+BLOG_SLUG = ""
+BLOG_USE_FEATURED_IMAGE = True

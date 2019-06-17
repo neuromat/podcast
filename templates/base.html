@@ -59,86 +59,14 @@
     <!-- HEADER -->
     {% include "includes/header.html" %}
 
-    <div style="margin-top: 30px;" class="main-content multiple-posts">
+    <div style="margin-top: 30px;" class="main-content multiple-posts container-fluid">
+        <div class="container container-full  {% if True %} hello {% endif %}">
          {% block main %}{% endblock %}
-
-{#        <h1>Podcasts recentes</h1>#}
-{#        <div class="podcast-container" style="">#}
-{##}
-{#            <!-- Item -->#}
-{#            <div class="podcast">#}
-{#                <div class="podcast-thumbnail" style="background-image:url('https://jornal.usp.br/wp-content/uploads/20160525_00_cerebro-300x135.jpg')"></div>#}
-{#                <div class="podcast-info">#}
-{#                    <h2>NeuroMat Podcast Intro</h2>#}
-{#                    <ul class="podcast-avaiablein-list">#}
-{#                        <li><a href="#"><i class="fab fa-spotify"></i></a></li>#}
-{#                        <li><a href="#"><i class="fab fa-itunes"></i></a></li>#}
-{#                        <li><a href="#"><i class="fas fa-play"></i></a></li>#}
-{#                    </ul>#}
-{#                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum molestias atque error.</p>#}
-{#                </div>#}
-{#            </div>#}
-{##}
-{#            <!-- / Item -->#}
-{#            <!-- Item -->#}
-{#            <div class="podcast">#}
-{#                <div class="podcast-thumbnail" style="background-image:url('https://jornal.usp.br/wp-content/uploads/2019/04/20190415_00_Microchip-554x305.jpg')"></div>#}
-{#                <div class="podcast-info">#}
-{#                    <h2>NeuroMat Podcast Intro</h2>#}
-{#                    <ul class="podcast-avaiablein-list">#}
-{#                        <li><a href="#"><i class="fab fa-spotify"></i></a></li>#}
-{#                        <li><a href="#"><i class="fab fa-itunes"></i></a></li>#}
-{#                        <li><a href="#"><i class="fas fa-play"></i></a></li>#}
-{#                    </ul>#}
-{#                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum molestias atque error.</p>#}
-{#                </div>#}
-{#            </div>#}
-{#            <!-- / Item -->#}
-{#            <!-- Item -->#}
-{#            <div class="podcast">#}
-{#                <div class="podcast-thumbnail" style="background-image:url('https://www5.usp.br/wp-content/uploads/pesquisa-1.jpg')"></div>#}
-{#                <div class="podcast-info">#}
-{#                    <h2>NeuroMat Podcast Intro</h2>#}
-{#                    <ul class="podcast-avaiablein-list">#}
-{#                        <li><a href="#"><i class="fab fa-spotify"></i></a></li>#}
-{#                        <li><a href="#"><i class="fab fa-itunes"></i></a></li>#}
-{#                        <li><a href="#"><i class="fas fa-play"></i></a></li>#}
-{#                    </ul>#}
-{#                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum molestias atque error.</p>#}
-{#                </div>#}
-{#            </div>#}
-{#            <!-- / Item -->#}
-{#            <!-- Item -->#}
-{#            <div class="podcast">#}
-{#                <div class="podcast-thumbnail" style="background-image:url('https://www5.usp.br/wp-content/uploads/pesq_prp.jpg')"></div>#}
-{#                <div class="podcast-info">#}
-{#                    <h2>NeuroMat Podcast Intro</h2>#}
-{#                    <ul class="podcast-avaiablein-list">#}
-{#                        <li><a href="#"><i class="fab fa-spotify"></i></a></li>#}
-{#                        <li><a href="#"><i class="fab fa-itunes"></i></a></li>#}
-{#                        <li><a href="#"><i class="fas fa-play"></i></a></li>#}
-{#                    </ul>#}
-{#                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum molestias atque error.</p>#}
-{#                </div>#}
-{#            </div>#}
-{#            <!-- / Item -->#}
-{#            <!-- Item -->#}
-{#            <div class="podcast">#}
-{#                <div class="podcast-thumbnail" style="background-image:url('https://jornal.usp.br/wp-content/uploads/2019/04/20190415_00_Microchip-554x305.jpg')"></div>#}
-{#                <div class="podcast-info">#}
-{#                    <h2>NeuroMat Podcast Intro</h2>#}
-{#                    <ul class="podcast-avaiablein-list">#}
-{#                        <li><a href="#"><i class="fab fa-spotify"></i></a></li>#}
-{#                        <li><a href="#"><i class="fab fa-itunes"></i></a></li>#}
-{#                        <li><a href="#"><i class="fas fa-play"></i></a></li>#}
-{#                    </ul>#}
-{#                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum molestias atque error.</p>#}
-{#                </div>#}
-{#            </div>#}
-{#            <!-- / Item -->#}
-{#        </div>#}
+        </div>
     </div>
 </div>
+
+
 <!-- SINGLE POST MODEL -->
 <div class="main-content single-post-line" style="display:none;">
     <h1>Podcasts recentes (Modelo um post por linha)</h1>
@@ -171,7 +99,6 @@
             </div>
         </div>
         <!-- / Item -->
-
     </div>
 </div>
 </div>
