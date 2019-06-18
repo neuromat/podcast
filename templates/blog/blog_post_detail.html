@@ -58,12 +58,23 @@
                     </audio>
                     <button class="btn-compartilhar"> <i class="fas fa-share-alt"></i> Compartilhar </button>
                 </div>
+                {% if blog_post.video %}
+{#                    <div class="row">#}
+{#                        <div class="col-md-12 col-lg-12">#}
+                            <!-- Making Off Video Embed -->
+                            <h3 class="subtitulo">Material Extra</h3>
+                            <div class="making-off-video-container">
+                                <div class="desktop-only full">
+                                    {% video blog_post.video '100% x 350px' %}
+                                </div>
+                                <div class="mobile-only full">
+                                    {% video blog_post.video '100% x 150px' %}
+                                </div>
+                            </div>
+{#                        </div>#}
+{#                    </div>#}
 
-                <!-- Making Off Video Embed -->
-                <h3 class="subtitulo">Making Off</h3>
-                <div class="making-off-video-container">
-                    {% video blog_post.video '100% x 350px' %}
-                </div>
+                  {% endif %}
               </div>
             </div>
 
@@ -72,6 +83,8 @@
         {% include "includes/sidebar.html" %}
       </div>
     </div>
+
+
 
 
 {#  ################################################################################################################  #}

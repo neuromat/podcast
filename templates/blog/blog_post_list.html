@@ -1,6 +1,8 @@
 {% extends "../base.html" %}
 {% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags %}
 
+
+{% load blog_extras %}
 {% block meta_title %}{% if page %}{{ page.meta_title }}{% else %}{% trans "Blog" %}{% endif %}{% endblock %}
 
 {% block meta_keywords %}{% metablock %}
@@ -80,101 +82,38 @@
         }
     </style>
 
-    <div class="podcast-container" style="">
-    {% for blog_post in blog_posts.object_list %}
-        <div class="podcast">
-        <div class="podcast-thumbnail" style="background-image:url('{{ MEDIA_URL }}{{ blog_post.featured_image }}')">
-{#            {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}#}
-{#                {% block blog_post_list_post_featured_image %}#}
-{#                    <a href="{{ blog_post.get_absolute_url }}">#}
-{#                        <img class="img-thumbnail pull-left" src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 90 90 %}">#}
-{#                    </a>#}
-{#                {% endblock %}#}
-{#            {% endif %}#}
-        </div>
-
-        <div class="podcast-info">
-            {% block blog_post_list_post_title %}
-                {% editable blog_post.title %}
-                    <h2>
-                        <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
-                    </h2>
-                {% endeditable %}
-                <ul class="podcast-avaiablein-list">
-                    <li><a href="#"><i class="fab fa-spotify"></i></a></li>
-                    <li><a href="#"><i class="fab fa-itunes"></i></a></li>
-                    <li><a href="#"><i class="fas fa-play"></i></a></li>
-                </ul>
-                <p class="truncate">
-                    {% block blog_post_list_post_content %}
-                        {% editable blog_post.content %}
-                            {{ blog_post.description_from_content|safe }}
+    <div class="podcast-container {% if blog_posts.object_list.count <= 3 %} singlecase {% endif %}" style="">
+        {% for blog_post in blog_posts.object_list %}
+            <div class="podcast">
+                <a class="podcast-thumbnail" href="{{ blog_post.get_absolute_url }}" style="background-image:url('{{ MEDIA_URL }}{{ blog_post.featured_image }}')"></a>
+                <div class="podcast-info">
+                    {% block blog_post_list_post_title %}
+                        {% editable blog_post.title %}
+                            <h2>
+                                <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+                            </h2>
                         {% endeditable %}
+                        <ul class="podcast-avaiablein-list">
+                            <li><a href="#"><i class="fab fa-spotify"></i></a></li>
+                            <li><a href="#"><i class="fab fa-itunes"></i></a></li>
+                            <li><a href="#"><i class="fas fa-play"></i></a></li>
+                        </ul>
+                        <p>
+                            {% block blog_post_list_post_content %}
+                                {% editable blog_post.content %}
+                                    {% autoescape off %}
+                                        {% postExcerpt blog_post.content %}
+                                    {% endautoescape off %}
+{#                                    {{ blog_post.description_from_content|safe }}#}
+                                {% endeditable %}
+                            {% endblock %}
+                        </p>
                     {% endblock %}
-                </p>
-            {% endblock %}
-
-        <p></p>
-        </div>
-
-{#        {% block blog_post_list_post_metainfo %}#}
-{#            {% editable blog_post.publish_date %}#}
-{#                <h6 class="post-meta">#}
-{#                    {% trans "Posted by" %}:#}
-{#                    {% with blog_post.user as author %}#}
-{#                        <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>#}
-{#                    {% endwith %}#}
-{#                    {% with blog_post.categories.all as categories %}#}
-{#                        {% if categories %}#}
-{#                            {% trans "in" %}#}
-{#                            {% for category in categories %}#}
-{#                                <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}#}
-{#                            {% endfor %}#}
-{#                        {% endif %}#}
-{#                    {% endwith %}#}
-{#                    {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}#}
-{#                </h6>#}
-{#            {% endeditable %}#}
-{#        {% endblock %}#}
-
-
-
-
-
-{#        {% block blog_post_list_post_links %}#}
-{#            <div class="blog-list-detail">#}
-{#                {% keywords_for blog_post as tags %}#}
-{#                {% if tags %}#}
-{#                    <ul class="list-inline tags">#}
-{#                        {% trans "Tags" %}:#}
-{#                        {% spaceless %}#}
-{#                            {% for tag in tags %}#}
-{#                                <li><a href="{% url "blog_post_list_tag" tag.slug %}" class="tag">{{ tag }}</a>{% if not forloop.last %}, {% endif %}</li>#}
-{#                            {% endfor %}#}
-{#                        {% endspaceless %}#}
-{#                    </ul>#}
-{#                {% endif %}#}
-{#                <p>#}
-{#                    <a href="{{ blog_post.get_absolute_url }}">{% trans "read more" %}</a>#}
-{#                    {% if blog_post.allow_comments %}#}
-{#                        /#}
-{#                        {% if settings.COMMENTS_DISQUS_SHORTNAME %}#}
-{#                            <a href="{{ blog_post.get_absolute_url }}#disqus_thread"#}
-{#                               data-disqus-identifier="{% disqus_id_for blog_post %}">#}
-{#                                {% trans "Comments" %}#}
-{#                            </a>#}
-{#                        {% else %}#}
-{#                            <a href="{{ blog_post.get_absolute_url }}#comments">#}
-{#                                {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}#}
-{#                            </a>#}
-{#                        {% endif %}#}
-{#                    {% endif %}#}
-{#                </p>#}
-{#            </div>#}
-{#        {% endblock %}#}
-        </div>
-    {% endfor %} {#  END LOOP #}
+                </div>
+            </div>
+        {% endfor %} {#  END LOOP #}
     </div>
+
     {% pagination_for blog_posts %}
 
     {% if settings.COMMENTS_DISQUS_SHORTNAME %}
