@@ -83,29 +83,29 @@
     </style>
 
     <!-- REPRESENTAÇÃO MODELO MODIFICADO PROPOSTO POR SARA -->
+
+    <h2>Episódios Recentes</h2>
+
     <div class="podcast-feed">
+    {% for blog_post in blog_posts.object_list %}
         <!-- item -->
         <div class="podcast-feed-item">
-            <div class="podcast-feed-thumb" style="background-image: url('https://www.prosoundnetwork.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTUxOTA1OTEzNTQ4OTczMDgy/seth-mosley-producer-with-a-podcast-promo-image.jpg');"></div>
+            <div class="podcast-feed-thumb" style="background-image:url('{{ MEDIA_URL }}{{ blog_post.featured_image }}')"></div>
             <div class="podcast-feed-info">
-                <h2>Como o cérebro toma decisões</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus enim illo impedit laboriosam maiores natus nemo neque pariatur. maiores natus nemo neque pariatur.</p></div>
-            <div class="podcast-feed-plat-links">
-                <ul class="podcast-avaiablein-list">
-                    <li><a href="#"><i class="fab fa-spotify"></i></a></li>
-                    <li><a href="#"><i class="fab fa-itunes"></i></a></li>
-                    <li><a href="#"><i class="fas fa-play"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- / item -->
+                {% editable blog_post.title %}
+                    <h2>
+                        <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+                    </h2>
+                {% endeditable %}
 
-        <!-- item -->
-        <div class="podcast-feed-item">
-            <div class="podcast-feed-thumb" style="background-image: url('https://www.prosoundnetwork.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTUxOTA1OTEzNTQ4OTczMDgy/seth-mosley-producer-with-a-podcast-promo-image.jpg');"></div>
-            <div class="podcast-feed-info">
-                <h2>Como o cérebro toma decisões</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus enim illo impedit laboriosam maiores natus nemo neque pariatur. maiores natus nemo neque pariatur.</p></div>
+                {% block blog_post_list_post_content %}
+                    {% editable blog_post.content %}
+                        {% autoescape off %}
+                            {% postExcerpt blog_post.content %}
+                        {% endautoescape off %}
+                    {% endeditable %}
+                {% endblock %}
+            </div>
             <div class="podcast-feed-plat-links">
                 <ul class="podcast-avaiablein-list">
                     <li><a href="#"><i class="fab fa-spotify"></i></a></li>
@@ -115,38 +115,7 @@
             </div>
         </div>
         <!-- / item -->
-
-        <!-- item -->
-        <div class="podcast-feed-item">
-            <div class="podcast-feed-thumb" style="background-image: url('https://www.prosoundnetwork.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTUxOTA1OTEzNTQ4OTczMDgy/seth-mosley-producer-with-a-podcast-promo-image.jpg');"></div>
-            <div class="podcast-feed-info">
-                <h2>Como o cérebro toma decisões</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus enim illo impedit laboriosam maiores natus nemo neque pariatur. maiores natus nemo neque pariatur.</p></div>
-            <div class="podcast-feed-plat-links">
-                <ul class="podcast-avaiablein-list">
-                    <li><a href="#"><i class="fab fa-spotify"></i></a></li>
-                    <li><a href="#"><i class="fab fa-itunes"></i></a></li>
-                    <li><a href="#"><i class="fas fa-play"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- / item -->
-
-        <!-- item -->
-        <div class="podcast-feed-item">
-            <div class="podcast-feed-thumb" style="background-image: url('https://www.prosoundnetwork.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTUxOTA1OTEzNTQ4OTczMDgy/seth-mosley-producer-with-a-podcast-promo-image.jpg');"></div>
-            <div class="podcast-feed-info">
-                <h2>Como o cérebro toma decisões</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus enim illo impedit laboriosam maiores natus nemo neque pariatur. maiores natus nemo neque pariatur.</p></div>
-            <div class="podcast-feed-plat-links">
-                <ul class="podcast-avaiablein-list">
-                    <li><a href="#"><i class="fab fa-spotify"></i></a></li>
-                    <li><a href="#"><i class="fab fa-itunes"></i></a></li>
-                    <li><a href="#"><i class="fas fa-play"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- / item -->
+        {% endfor %}
     </div>
 
     <div style="display:none" class="podcast-container {% if blog_posts.object_list.count <= 3 %} singlecase {% endif %}" style="">
@@ -166,14 +135,14 @@
                             <li><a href="#"><i class="fas fa-play"></i></a></li>
                         </ul>
                         <p>
-                            {% block blog_post_list_post_content %}
-                                {% editable blog_post.content %}
-                                    {% autoescape off %}
-                                        {% postExcerpt blog_post.content %}
-                                    {% endautoescape off %}
+{#                            {% block blog_post_list_post_content %}#}
+{#                                {% editable blog_post.content %}#}
+{#                                    {% autoescape off %}#}
+{#                                        {% postExcerpt blog_post.content %}#}
+{#                                    {% endautoescape off %}#}
 {#                                    {{ blog_post.description_from_content|safe }}#}
-                                {% endeditable %}
-                            {% endblock %}
+{#                                {% endeditable %}#}
+{#                            {% endblock %}#}
                         </p>
                     {% endblock %}
                 </div>
