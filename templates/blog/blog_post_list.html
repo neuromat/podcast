@@ -82,7 +82,74 @@
         }
     </style>
 
-    <div class="podcast-container {% if blog_posts.object_list.count <= 3 %} singlecase {% endif %}" style="">
+    <!-- REPRESENTAÇÃO MODELO MODIFICADO PROPOSTO POR SARA -->
+    <div class="podcast-feed">
+        <!-- item -->
+        <div class="podcast-feed-item">
+            <div class="podcast-feed-thumb" style="background-image: url('https://www.prosoundnetwork.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTUxOTA1OTEzNTQ4OTczMDgy/seth-mosley-producer-with-a-podcast-promo-image.jpg');"></div>
+            <div class="podcast-feed-info">
+                <h2>Como o cérebro toma decisões</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus enim illo impedit laboriosam maiores natus nemo neque pariatur. maiores natus nemo neque pariatur.</p></div>
+            <div class="podcast-feed-plat-links">
+                <ul class="podcast-avaiablein-list">
+                    <li><a href="#"><i class="fab fa-spotify"></i></a></li>
+                    <li><a href="#"><i class="fab fa-itunes"></i></a></li>
+                    <li><a href="#"><i class="fas fa-play"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- / item -->
+
+        <!-- item -->
+        <div class="podcast-feed-item">
+            <div class="podcast-feed-thumb" style="background-image: url('https://www.prosoundnetwork.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTUxOTA1OTEzNTQ4OTczMDgy/seth-mosley-producer-with-a-podcast-promo-image.jpg');"></div>
+            <div class="podcast-feed-info">
+                <h2>Como o cérebro toma decisões</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus enim illo impedit laboriosam maiores natus nemo neque pariatur. maiores natus nemo neque pariatur.</p></div>
+            <div class="podcast-feed-plat-links">
+                <ul class="podcast-avaiablein-list">
+                    <li><a href="#"><i class="fab fa-spotify"></i></a></li>
+                    <li><a href="#"><i class="fab fa-itunes"></i></a></li>
+                    <li><a href="#"><i class="fas fa-play"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- / item -->
+
+        <!-- item -->
+        <div class="podcast-feed-item">
+            <div class="podcast-feed-thumb" style="background-image: url('https://www.prosoundnetwork.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTUxOTA1OTEzNTQ4OTczMDgy/seth-mosley-producer-with-a-podcast-promo-image.jpg');"></div>
+            <div class="podcast-feed-info">
+                <h2>Como o cérebro toma decisões</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus enim illo impedit laboriosam maiores natus nemo neque pariatur. maiores natus nemo neque pariatur.</p></div>
+            <div class="podcast-feed-plat-links">
+                <ul class="podcast-avaiablein-list">
+                    <li><a href="#"><i class="fab fa-spotify"></i></a></li>
+                    <li><a href="#"><i class="fab fa-itunes"></i></a></li>
+                    <li><a href="#"><i class="fas fa-play"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- / item -->
+
+        <!-- item -->
+        <div class="podcast-feed-item">
+            <div class="podcast-feed-thumb" style="background-image: url('https://www.prosoundnetwork.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_620/MTUxOTA1OTEzNTQ4OTczMDgy/seth-mosley-producer-with-a-podcast-promo-image.jpg');"></div>
+            <div class="podcast-feed-info">
+                <h2>Como o cérebro toma decisões</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus enim illo impedit laboriosam maiores natus nemo neque pariatur. maiores natus nemo neque pariatur.</p></div>
+            <div class="podcast-feed-plat-links">
+                <ul class="podcast-avaiablein-list">
+                    <li><a href="#"><i class="fab fa-spotify"></i></a></li>
+                    <li><a href="#"><i class="fab fa-itunes"></i></a></li>
+                    <li><a href="#"><i class="fas fa-play"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- / item -->
+    </div>
+
+    <div style="display:none" class="podcast-container {% if blog_posts.object_list.count <= 3 %} singlecase {% endif %}" style="">
         {% for blog_post in blog_posts.object_list %}
             <div class="podcast">
                 <a class="podcast-thumbnail" href="{{ blog_post.get_absolute_url }}" style="background-image:url('{{ MEDIA_URL }}{{ blog_post.featured_image }}')"></a>

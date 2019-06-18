@@ -73,6 +73,14 @@ EXTRA_MODEL_FIELDS = (
         {"upload_to": "uploads", "max_length": 150, "default": ""},
     ),
 
+    # CAMPO TRANSCRIÇÃO
+    (
+        "mezzanine.blog.models.BlogPost.transcription",
+        "mezzanine.core.fields.RichTextField",
+        ("Insira a transcrição ou algum conteúdo extra",),
+        {"blank": True, "null": True},
+    ),
+
     # # Example of adding a field to *all* of Mezzanine's content types:
     # (
     #     "mezzanine.pages.models.Page.another_field",

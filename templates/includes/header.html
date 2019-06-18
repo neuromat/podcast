@@ -1,3 +1,4 @@
+{% load pages_tags mezzanine_tags i18n staticfiles %}
     <header class="desktop-only">
         <div class="main-header-content">
             <div class="logo-heading-container">
@@ -21,14 +22,8 @@
 {#                <span>#}
 {#                Busque por um Podcast#}
 {#            </span>#}
-
             </div>
         </div>
     </header>
 
-    <nav class="global-navigation desktop-only">
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Podcasts</a></li>
-        </ul>
-    </nav>
+    {% page_menu "pages/menus/primary.html" %}
