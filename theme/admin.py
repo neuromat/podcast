@@ -4,6 +4,8 @@ from copy import deepcopy
 from django.contrib import admin
 from mezzanine.blog.admin import BlogPostAdmin
 from mezzanine.blog.models import BlogPost
+from .models import Slider
+
 
 blog_fieldsets = deepcopy(BlogPostAdmin.fieldsets)
 blog_fieldsets[0][1]["fields"].insert(-2, "podcastfile")
@@ -16,3 +18,4 @@ class MyBlogPostAdmin(BlogPostAdmin):
 
 admin.site.unregister(BlogPost)
 admin.site.register(BlogPost, MyBlogPostAdmin)
+admin.site.register(Slider)

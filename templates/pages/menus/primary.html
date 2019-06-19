@@ -1,6 +1,13 @@
+{% load pages_tags i18n %}
+
 <nav class="global-navigation desktop-only">
     <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Podcasts</a></li>
+    <li><a href="/">Home</a></li>
+        {% for page in page_branch %}
+            {% if page.in_menu %}
+            <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
+            {% endif %}
+        {% endfor %}
+
     </ul>
 </nav>

@@ -73,24 +73,14 @@
         {% endif %}
     {% endif %}
 
-    <style>
-        .truncate {
-          width: 250px;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-    </style>
-
     <!-- REPRESENTAÇÃO MODELO MODIFICADO PROPOSTO POR SARA -->
-
-    <h2>Episódios Recentes</h2>
+    <h2 class="titulo-sessao titulo-sessao--home">Episódios Recentes</h2>
 
     <div class="podcast-feed">
     {% for blog_post in blog_posts.object_list %}
         <!-- item -->
         <div class="podcast-feed-item">
-            <div class="podcast-feed-thumb" style="background-image:url('{{ MEDIA_URL }}{{ blog_post.featured_image }}')"></div>
+            <a class="podcast-feed-thumb" href="{{ blog_post.get_absolute_url }}" style="background-image:url('{{ MEDIA_URL }}{{ blog_post.featured_image }}')"></a>
             <div class="podcast-feed-info">
                 {% editable blog_post.title %}
                     <h2>
