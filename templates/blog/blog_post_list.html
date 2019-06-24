@@ -1,5 +1,5 @@
 {% extends "../base.html" %}
-{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags %}
+{% load i18n mezzanine_tags blog_tags pages_tags keyword_tags disqus_tags %}
 
 
 {% load blog_extras %}
@@ -75,6 +75,7 @@
 
     <!-- REPRESENTAÇÃO MODELO MODIFICADO PROPOSTO POR SARA -->
     <h2 class="titulo-sessao titulo-sessao--home">Episódios Recentes</h2>
+
 
     <div class="podcast-feed">
     {% for blog_post in blog_posts.object_list %}

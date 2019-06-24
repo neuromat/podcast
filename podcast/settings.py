@@ -81,6 +81,7 @@ EXTRA_MODEL_FIELDS = (
         {"blank": True, "null": True},
     ),
 
+
     # # Example of adding a field to *all* of Mezzanine's content types:
     # (
     #     "mezzanine.pages.models.Page.another_field",
