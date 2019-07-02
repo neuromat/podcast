@@ -12,7 +12,7 @@ def postExcerpt(content):
 
 
 @register.simple_tag
-def sampleContent(post, mediaurl):
+def postGallery(post, mediaurl):
 
     string = "";
 

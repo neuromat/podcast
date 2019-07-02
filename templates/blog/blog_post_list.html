@@ -80,7 +80,7 @@
     <div class="podcast-feed">
     {% for blog_post in blog_posts.object_list %}
         <!-- item -->
-        <div class="podcast-feed-item">
+        <div class="podcast-feed-item {% if blog_posts.object_list.count <= 1 %} singlecase {% endif %}">
             <a class="podcast-feed-thumb" href="{{ blog_post.get_absolute_url }}" style="background-image:url('{{ MEDIA_URL }}{{ blog_post.featured_image }}')"></a>
             <div class="podcast-feed-info">
                 {% editable blog_post.title %}
@@ -101,7 +101,8 @@
                 <ul class="podcast-avaiablein-list">
                     <li><a href="#"><i class="fab fa-spotify"></i></a></li>
                     <li><a href="#"><i class="fab fa-itunes"></i></a></li>
-                    <li><a href="#"><i class="fas fa-play"></i></a></li>
+                    <li><a href="#"><i class="fab fa-soundcloud"></i></a></li>
+
                 </ul>
             </div>
         </div>

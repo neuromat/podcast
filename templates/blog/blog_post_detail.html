@@ -65,19 +65,12 @@
                         <source src="{{ MEDIA_URL }}/{{ blog_post.podcastfile}}" type="audio/mpeg">
                             Your browser does not support the audio element.
                     </audio>
-                    {% block blog_post_detail_sharebuttons %}
-                        {% set_short_url_for blog_post %}
-                        <a class="btn btn-sm share-twitter" target="_blank" href="https://twitter.com/intent/tweet?url={{ blog_post.short_url|urlencode }}&amp;text={{ blog_post.title|urlencode }}">{% trans "Share on Twitter" %}</a>
-                        <a class="btn btn-sm share-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">{% trans "Share on Facebook" %}</a>
-                    {% endblock %}
-                    <button class="btn-compartilhar"> <i class="fas fa-share-alt"></i> Compartilhar </button>
-                </div>
-
-                <div class="post-image-gallery">
-                    <div class="post-image-gallery-item">
-                        {% autoescape off %}
-                             {% sampleContent blog_post MEDIA_URL %}
-                        {% endautoescape %}
+                    <div class="sharebuttons">
+                        {% block blog_post_detail_sharebuttons %}
+                            {% set_short_url_for blog_post %}
+                            <a class="btn btn-sm share-twitter" target="_blank" href="https://twitter.com/intent/tweet?url={{ blog_post.short_url|urlencode }}&amp;text={{ blog_post.title|urlencode }}">{% trans "Compartilhar no Twitter" %}</a>
+                            <a class="btn btn-sm share-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">{% trans "Compartilhar no Facebook" %}</a>
+                        {% endblock %}
                     </div>
                 </div>
 
@@ -95,6 +88,17 @@
                         </div>
                     </div>
                 {% endif %}
+
+                  <div class="custom-block">
+                    <h3 class="subtitulo">Imagens</h3>
+                    <div class="post-image-gallery">
+                        <div class="post-image-gallery-item">
+                            {% autoescape off %}
+                                 {% postGallery blog_post MEDIA_URL %}
+                            {% endautoescape %}
+                        </div>
+                    </div>
+                  </div>
 
                   <div class="custom-block">
                     {% block blog_post_detail_comments %}
@@ -133,11 +137,6 @@
       </div>
     </div>
 
-    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
@@ -158,48 +157,6 @@
   </div>
 </div>
 
-    <style>
-        .post-image-gallery{
-            margin: 20px 0 0 0;
-            padding: 0;
-            list-style: none;
-            display: flex;
-        }
-
-        .post-gallery-item{
-            width: 180px;
-            height: 100px;
-            cursor: pointer;
-            transition: all ease 0.5s;
-        }
-
-        .post-gallery-item:hover{
-            opacity: 0.8;
-        }
-
-        .modal-body--image-gallery{
-            padding: 0;
-        }
-
-        .image-item-container{
-            display: flex;
-            width: 100%;
-            height: 350px;
-            -webkit-background-size: cover;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .modal-footer-image-gallery{
-            margin: 0;
-            padding-top: 8px;
-            padding-bottom: 8px;
-            padding-right: 8px;
-        }
-    </style>
-
-
     <script>
         $(document).ready(function(){
             $('.post-gallery-item').click((e) => {
@@ -208,7 +165,6 @@
                 $('#exampleModal').modal('show');
             })
         });
-
     </script>
 
 
