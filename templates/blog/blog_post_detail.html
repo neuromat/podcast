@@ -135,11 +135,26 @@
 
     <script>
         $(document).ready(function(){
+
             $('.post-gallery-item').click((e) => {
+                console.log(e.target.id);
                 let currentImage = $(e.target).attr('src');
+
                 $('#imgContainer').css('background-image', `url('${currentImage}'`);
+
                 $('#exampleModal').modal('show');
-            })
+            });
+
+            /*
+            let arr = $('.post-image-gallery-item').children('img');
+            let images = [];
+
+            arr.map( (index, el) => {
+                console.log(index, el);
+                $(el).attr('id', 'image' + index);
+                images.push(el);
+            }); */
+
         });
     </script>
 
