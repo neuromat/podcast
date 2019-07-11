@@ -12,18 +12,7 @@
 
     <div class="single-page-container">
       <!-- SINGLE POST MODEL -->
-      <div class="main-content single">
-          <div class="podcast-container">
-            <!-- Breadcrumbs Component -->
-            <div class="breadcrumbs-component">
-              <ul>
-                {% block breadcrumb_menu %}
-                    {{ block.super }}
-                    <li class="active">{{ blog_post.title }}</li>
-                {% endblock %}
-              </ul>
-            </div>
-
+      <div class="single">
             <div class="podcast">
               <!-- <div class="podcast-thumbnail" style="background:url('https://jornal.usp.br/wp-content/uploads/20160525_00_cerebro-300x135.jpg')"></div> -->
               <div class="podcast-info">
@@ -32,20 +21,9 @@
                 {% endblock %}
                     {% editable blog_post.publish_date %}
                     <h6 class="post-meta">
-                        {% trans "Posted by" %}:
-                        {% with blog_post.user as author %}
-                        <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
-                        {% endwith %}
-                        {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}
+                        Publicado em {% blocktrans with sometime=blog_post.publish_date|date:"d/m/Y" %} {{ sometime }} {% endblocktrans %}
                     </h6>
                     {% endeditable %}
-
-{#                 FEATURED IMAGE                            #}
-{#                {% block blog_post_detail_featured_image %}#}
-{#                    {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}#}
-{#                        <p><img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 600 0 %}"></p>#}
-{#                    {% endif %}#}
-{#                {% endblock %}#}
 
                 <ul class="podcast-avaiablein-list">
                   <li><a href="#"><i class="fab fa-spotify"></i></a></li>
@@ -131,31 +109,29 @@
               </div>
             </div>
 
-          </div>
-        </div>
         {% include "includes/sidebar.html" %}
       </div>
     </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content ">
-      <div class="modal-header" style="display:none">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body modal-body--image-gallery">
-        <div id="imgContainer" class="image-item-container"></div>
-      </div>
-      <div class="modal-footer modal-footer-image-gallery">
-        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Fechar</button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content ">
+          <div class="modal-header" style="display:none">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body modal-body--image-gallery">
+            <div id="imgContainer" class="image-item-container"></div>
+          </div>
+          <div class="modal-footer modal-footer-image-gallery">
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
     <script>
         $(document).ready(function(){

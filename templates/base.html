@@ -53,15 +53,15 @@
 <!-- MOBILE MENU -->
 {% page_menu "pages/menus/mobile.html" %}
 
-<div class="app">
-    <!-- HEADER -->
-    {% include "includes/header.html" %}
-    <div class="main-content multiple-posts container-fluid">
-        <div class="container container-full">
-         {% block main %}{% endblock %}
-        </div>
+
+<!-- HEADER -->
+{% include "includes/header.html" %}
+<div class="main-content multiple-posts container-fluid">
+    <div class="container container-full">
+     {% block main %}{% endblock %}
     </div>
 </div>
+
 
 <div id="searchBoxContainer" class="search-box-container">
     <div class="search-form">

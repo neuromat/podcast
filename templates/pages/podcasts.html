@@ -1,0 +1,62 @@
+{% extends "../base.html" %}
+{% load mezzanine_tags keyword_tags %}
+{% load i18n mezzanine_tags blog_tags pages_tags keyword_tags disqus_tags %}
+{% load blog_extras %}
+
+{% block meta_title %}{{ page.meta_title }}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{% block title %}
+{% editable page.title %}{{ page.title }}{% endeditable %}
+{% endblock %}
+
+{% block main %}
+    <h2 class="titulo-sessao titulo-sessao--home">Podcasts publicados</h2>
+    <div class="podcast-feed">
+    {% blog_recent_posts 5 as recent_posts %}
+        {% if recent_posts %}
+            {% for recent_post in recent_posts %}
+                <!-- item -->
+                <div class="podcast-feed-item {% if recent_post.object_list.count <= 1 %} singlecase {% endif %}">
+                    <a class="podcast-feed-thumb" href="{{ recent_post.get_absolute_url }}" style="background-image:url('{{ MEDIA_URL }}{{ recent_post.featured_image }}')"></a>
+                    <div class="podcast-feed-info">
+                        {% editable recent_post.title %}
+                            <h2>
+                                <a href="{{ recent_post.get_absolute_url }}">{{ recent_post.title }}</a>
+                            </h2>
+                        {% endeditable %}
+
+                        {% block blog_post_list_post_content %}
+                            {% editable recent_post.content %}
+                                {% autoescape off %}
+                                    {% postExcerpt recent_post.content %}
+                                {% endautoescape off %}
+                            {% endeditable %}
+                        {% endblock %}
+                    </div>
+                    <div class="podcast-feed-plat-links">
+                        <ul class="podcast-avaiablein-list">
+                            <li><a href="https://www.spotify.com" target="_blank"><i class="fab fa-spotify"></i></a></li>
+                            <li><a href="https://www.itunes.com" target="_blank"><i class="fab fa-itunes"></i></a></li>
+                            <li><a href="https://www.soundcloud.com" target="_blank"><i class="fab fa-soundcloud"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- / item -->
+                {% endfor %}
+            {% endif %}
+    </div>
+
+{% endblock %}

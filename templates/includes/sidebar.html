@@ -1,23 +1,22 @@
+{% load blog_extras %}
 
 <div class="sidebar">
     <div class="podcast-feed"><!-- Recent Posts -->
         {% load blog_tags keyword_tags i18n %}
         {% blog_recent_posts 5 as recent_posts %}
         {% if recent_posts %}
-            <h3>{% trans "Publicações recentes" %}</h3>
+            <h3>{% trans "Recentes" %}</h3>
             {% for recent_post in recent_posts %}
                 <!-- item -->
                 <div class="podcast-feed-item">
-                    <a class="podcast-feed-thumb" href="{{ recent_post.get_absolute_url }}" style="background-image:url('{{ MEDIA_URL }}{{ blog_post.featured_image }}')"></a>
+                    <a class="podcast-feed-thumb" href="{{ recent_post.get_absolute_url }}" style="background-image:url('{{ MEDIA_URL }}{{ recent_post.featured_image }}')"></a>
                     <div class="podcast-feed-info">
 
                         <h2>
                             <a href="{{ recent_post.get_absolute_url }}">{{ recent_post.title }}</a>
                         </h2>
-                        <small style="padding-left:10px;">
-                            {{ recent_post.publish_date|timesince }} {% trans "ago" %}
-                        </small>
-                        <p>{{ recent_post.description|safe }}</p>
+
+                        <p>{% postShortExcerpt recent_post.description %}</p>
                     </div>
                     <div class="podcast-feed-plat-links">
                         <ul class="podcast-avaiablein-list">
