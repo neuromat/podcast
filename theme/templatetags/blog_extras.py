@@ -4,10 +4,13 @@ from ..models import Slider
 
 register = template.Library()
 
+@register.simple_tag
+def postLargeExcerpt(content):
+    return content[0:350] + ".."
 
 @register.simple_tag
 def postExcerpt(content):
-    return content[0:100] + ".."
+    return content[0:180] + ".."
 
 @register.simple_tag
 def postShortExcerpt(content):
@@ -17,7 +20,7 @@ def postShortExcerpt(content):
 @register.simple_tag
 def postGallery(post, mediaurl):
 
-    string = "";
+    string = ""
 
     for i in Slider.objects.all():
         if i.post == post:

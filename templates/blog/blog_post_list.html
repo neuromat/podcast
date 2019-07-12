@@ -89,7 +89,11 @@
                 {% block blog_post_list_post_content %}
                     {% editable blog_post.content %}
                         {% autoescape off %}
-                            {% postExcerpt blog_post.content %}
+                            {% if blog_posts.object_list.count <= 1 %}
+                                {% postLargeExcerpt blog_post.content %}
+                            {% else %}
+                                {% postExcerpt blog_post.content %}
+                            {% endif %}
                         {% endautoescape off %}
                     {% endeditable %}
                 {% endblock %}
