@@ -1,160 +1,142 @@
 {% extends "blog/blog_post_list.html" %}
-{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n disqus_tags %}
+{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n static disqus_tags %}
 {% load embed_video_tags %}
 {% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
 {% load blog_extras %}
 {% block meta_keywords %}{% metablock %}
-{% keywords_for blog_post as tags %}
-{% for tag in tags %}{% if not forloop.first %}, {% endif %}{{ tag }}{% endfor %}
+    {% keywords_for blog_post as tags %}
+    {% for tag in tags %}{% if not forloop.first %}, {% endif %}{{ tag }}{% endfor %}
 {% endmetablock %}{% endblock %}
 
 {% block main %}
 
     <div class="single-page-container">
-      <!-- SINGLE POST MODEL -->
-      <div class="single">
+        <!-- SINGLE POST MODEL -->
+        <div class="single">
             <div class="podcast">
-              <div class="podcast-info">
-                {% block title %}
-                   <h2> {% editable blog_post.title %}{{ blog_post.title }}{% endeditable %}</h2>
-                {% endblock %}
+                <div class="podcast-info">
+                    {% block title %}
+                        <h2> {% editable blog_post.title %}{{ blog_post.title }}{% endeditable %}</h2>
+                    {% endblock %}
                     {% editable blog_post.publish_date %}
-                    <h6 class="post-meta">
-                        Publicado em {% blocktrans with sometime=blog_post.publish_date|date:"d/m/Y" %} {{ sometime }} {% endblocktrans %}
-                    </h6>
+                        <h6 class="post-meta">
+                            Publicado em {% blocktrans with sometime=blog_post.publish_date|date:"d/m/Y" %} {{ sometime }} {% endblocktrans %}
+                        </h6>
                     {% endeditable %}
 
-                <ul class="podcast-avaiablein-list">
-                  <li><a href="#"><i class="fab fa-spotify"></i></a></li>
-                  <li><a href="#"><i class="fab fa-itunes"></i></a></li>
-                  <li><a href="#"><i class="fas fa-play"></i></a></li>
-                </ul>
+                    <ul class="podcast-avaiablein-list">
+                        <li><a href="#"><i class="fab fa-spotify"></i></a></li>
+                        <li><a href="#"><i class="fab fa-itunes"></i></a></li>
+                        <li><a href="#"><i class="fas fa-play"></i></a></li>
+                    </ul>
 
-                <p>
-                    {% block meta_description %}{% metablock %}
-                    {{ blog_post.description }}
-                    {% endmetablock %}{% endblock %}
-                </p>
+                    <p>
+                        {% block meta_description %}{% metablock %}
+                            {{ blog_post.description }}
+                        {% endmetablock %}{% endblock %}
+                    </p>
 
-                <!-- Podcast component -->
-                <div class="podcast-component">
-                    <audio controls>
-                        <source src="{{ MEDIA_URL }}/{{ blog_post.podcastfile}}" type="audio/mpeg">
+                    <!-- Podcast component -->
+                    <div class="podcast-component">
+                        <audio controls>
+                            <source src="{{ MEDIA_URL }}/{{ blog_post.podcastfile}}" type="audio/mpeg">
                             Your browser does not support the audio element.
-                    </audio>
-                    <div class="sharebuttons">
-                        {% block blog_post_detail_sharebuttons %}
-                            {% set_short_url_for blog_post %}
-                            <a class="btn btn-sm share-twitter" target="_blank" href="https://twitter.com/intent/tweet?url={{ blog_post.short_url|urlencode }}&amp;text={{ blog_post.title|urlencode }}">{% trans "Compartilhar no Twitter" %}</a>
-                            <a class="btn btn-sm share-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">{% trans "Compartilhar no Facebook" %}</a>
+                        </audio>
+                        <div class="sharebuttons">
+                            {% block blog_post_detail_sharebuttons %}
+                                {% set_short_url_for blog_post %}
+                                <a class="btn btn-sm share-twitter" target="_blank" href="https://twitter.com/intent/tweet?url={{ blog_post.short_url|urlencode }}&amp;text={{ blog_post.title|urlencode }}">{% trans "Compartilhar no Twitter" %}</a>
+                                <a class="btn btn-sm share-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">{% trans "Compartilhar no Facebook" %}</a>
+                            {% endblock %}
+                        </div>
+                    </div>
+
+                    {% if blog_post.video %}
+                        <div class="custom-block">
+                            <!-- Making Off Video Embed -->
+                            <h3 class="subtitulo">Material Extra</h3>
+                            <div class="making-off-video-container">
+                                <div class="desktop-only full">
+                                    {% video blog_post.video '100% x 450px' %}
+                                </div>
+                                <div class="mobile-only full">
+                                    {% video blog_post.video '100% x 150px' %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <div class="custom-block">
+                        <h3 class="subtitulo">Imagens</h3>
+                        <div class="post-image-gallery">
+                            <div class="post-image-gallery-item">
+                                {% autoescape off %}
+                                    {% postGallery blog_post MEDIA_URL %}
+                                {% endautoescape %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="custom-block">
+                        {% block blog_post_detail_comments %}
+                            {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
                         {% endblock %}
                     </div>
-                </div>
 
-                {% if blog_post.video %}
                     <div class="custom-block">
-                        <!-- Making Off Video Embed -->
-                        <h3 class="subtitulo">Material Extra</h3>
-                        <div class="making-off-video-container">
-                            <div class="desktop-only full">
-                                {% video blog_post.video '100% x 450px' %}
-                            </div>
-                            <div class="mobile-only full">
-                                {% video blog_post.video '100% x 150px' %}
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-
-                  <div class="custom-block">
-                    <h3 class="subtitulo">Imagens</h3>
-                    <div class="post-image-gallery">
-                        <div class="post-image-gallery-item">
-                            {% autoescape off %}
-                                 {% postGallery blog_post MEDIA_URL %}
-                            {% endautoescape %}
-                        </div>
-                    </div>
-                  </div>
-
-                  <div class="custom-block">
-                    {% block blog_post_detail_comments %}
-                        {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
-                    {% endblock %}
-                  </div>
-
-                  <div class="custom-block">
-                    {% block blog_post_detail_commentlink %}
-                        <p>
-                            {% if blog_post.allow_comments %}
-                                {% if settings.COMMENTS_DISQUS_SHORTNAME %}
-                                    (<a href="{{ blog_post.get_absolute_url }}#disqus_thread"
-                                        data-disqus-identifier="{% disqus_id_for blog_post %}">{% spaceless %}
+                        {% block blog_post_detail_commentlink %}
+                            <p>
+                                {% if blog_post.allow_comments %}
+                                    {% if settings.COMMENTS_DISQUS_SHORTNAME %}
+                                        (<a href="{{ blog_post.get_absolute_url }}#disqus_thread"
+                                            data-disqus-identifier="{% disqus_id_for blog_post %}">{% spaceless %}
                                         {% trans "Comments" %}
                                     {% endspaceless %}</a>)
-                                {% else %}(<a href="#comments">{% spaceless %}
-                                    {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
+                                    {% else %}(<a href="#comments">{% spaceless %}
+                                        {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
                                     {% endspaceless %}</a>)
+                                    {% endif %}
                                 {% endif %}
-                            {% endif %}
-                        </p>
-                    {% endblock %}
+                            </p>
+                        {% endblock %}
 
-                    {% if settings.COMMENTS_DISQUS_SHORTNAME %}
-                        {% include "generic/includes/disqus_counts.html" %}
-                    {% endif %}
-                  </div>
+                        {% if settings.COMMENTS_DISQUS_SHORTNAME %}
+                            {% include "generic/includes/disqus_counts.html" %}
+                        {% endif %}
+                    </div>
 
-              </div>
+                </div>
             </div>
 
-        {% include "includes/sidebar.html" %}
-      </div>
+            {% include "includes/sidebar.html" %}
+        </div>
     </div>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content ">
-          <div class="modal-header" style="display:none">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body modal-body--image-gallery">
-            <div id="imgContainer" class="image-item-container"></div>
-          </div>
-          <div class="modal-footer modal-footer-image-gallery">
-            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Fechar</button>
-          </div>
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content ">
+                <div class="modal-header" style="display:none">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body modal-body--image-gallery">
+                    <div id="imgContainer" class="image-item-container"></div>
+                </div>
+                <div class="modal-footer modal-footer-image-gallery">
+                    <button id="prev" class="btn btn-secondary btn-sm">Anterior</button>
+                    <button id="next" class="btn btn-secondary btn-sm">Próxima</button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
-    <script type="text/javascript">
-        $(document).ready(function(){
-
-            $('.post-gallery-item').click((e) => {
-                console.log(e.target.id);
-                let currentImage = $(e.target).attr('src');
-
-                $('#imgContainer').css('background-image', `url('${currentImage}'`);
-
-                $('#exampleModal').modal('show');
-            });
-
-            /*
-            let arr = $('.post-image-gallery-item').children('img');
-            let images = [];
-
-            arr.map( (index, el) => {
-                console.log(index, el);
-                $(el).attr('id', 'image' + index);
-                images.push(el);
-            }); */
-
-        });
-    </script>
+    <!-- Image Gallery Script -->
+    {% block extra_js %}
+        <script type="text/javascript" src="{% static "js/image_gallery.js" %}"></script>
+    {% endblock %}
 
 {% endblock %}
