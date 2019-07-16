@@ -1,13 +1,21 @@
-{% load pages_tags i18n %}
+{% load pages_tags mezzanine_tags i18n  %}
 
-<nav class="global-navigation desktop-only">
-    <ul>
-    <li><a href="/">Home</a></li>
-        {% for page in page_branch %}
-            {% if page.in_menu %}
-            <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
-            {% endif %}
-        {% endfor %}
+<style>
 
-    </ul>
-</nav>
+</style>
+
+<div class="nav-container">
+    <nav class="global-navigation desktop-only">
+        <ul>
+            <li><a href="/">Home</a></li>
+            {% for page in page_branch %}
+                {% if page.in_menu %}
+                    <li> <a href="{{ page.get_absolute_url }}">{{ page.title }}</a> </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        {% block navbar_search_form %}
+            {% search_form %}
+        {% endblock %}
+    </nav>
+</div>

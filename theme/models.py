@@ -7,4 +7,4 @@ class Slider(models.Model):
     photo = models.ImageField()
  
     # def __str__(self):
-    #     return self.photo 
+    #     return self.photo

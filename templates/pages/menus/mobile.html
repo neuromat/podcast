@@ -1,3 +1,4 @@
+{% load mezzanine_tags %}
 <nav class=" mobile-only navbar navbar-expand-lg navbar-light navbar-podcast">
 {#  <a class="navbar-brand" href="#">Navbar</a>#}
 
@@ -17,7 +18,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse mobile-menu-nav" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
         <li><a href="/">Home</a></li>
         {% for page in page_branch %}
@@ -26,6 +27,10 @@
             {% endif %}
         {% endfor %}
     </ul>
+
+      {% block navbar_search_form %}
+        {% search_form %}
+      {% endblock %}
 
   </div>
 </nav>
