@@ -27,7 +27,7 @@
                     <ul class="podcast-avaiablein-list">
                         <li><a href="#"><i class="fab fa-spotify"></i></a></li>
                         <li><a href="#"><i class="fab fa-itunes"></i></a></li>
-                        <li><a href="#"><i class="fas fa-play"></i></a></li>
+                        <li><a target="_blank" href="https://soundcloud.com/a-matematica-do-cerebro"><i class="fab fa-soundcloud"></i></a></li>
                     </ul>
 
                     <p>
@@ -67,7 +67,7 @@
                     {% endif %}
 
                     <div class="custom-block">
-                        <h3 class="subtitulo">Imagens</h3>
+                        <h3 id="imageGalleryTitle" class="subtitulo">Imagens</h3>
                         <div class="post-image-gallery">
                             <div class="post-image-gallery-item">
                                 {% autoescape off %}
@@ -76,6 +76,7 @@
                             </div>
                         </div>
                     </div>
+
 
                     <div class="custom-block">
                         {% block blog_post_detail_comments %}

@@ -22,7 +22,7 @@ urlpatterns = i18n_patterns(
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
     url("^admin/", include(admin.site.urls)),
-    url("^pages/", direct_to_template, {"template": "pages/podcasts.html"}, name="podcasts"),
+    url("^pages/", direct_to_template, {"template": "pages/page.html"}, name="page"),
 )
 
 if settings.USE_MODELTRANSLATION:
