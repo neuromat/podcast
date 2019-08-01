@@ -1,0 +1,39 @@
+.simbolo-podcast {
+  width: 130px;
+  height: 80px;
+  background: #961936;
+  overflow: hidden;
+  position: relative;
+}
+
+.simbolo-podcast .elipse:nth-child(1) {
+  position: absolute;
+  width: 94%;
+  height: 60px;
+  border-radius: 50%;
+  background: #2a50a3;
+  top: -30px;
+  left: -40px;
+}
+
+.simbolo-podcast .elipse:nth-child(2) {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #6385c4;
+  top: 5px;
+  left: 60px;
+}
+
+.simbolo-podcast .elipse:nth-child(3) {
+  position: absolute;
+  width: 40px;
+  height: 35px;
+  border-radius: 50%;
+  background: #171f4d;
+  top: 38px;
+  left: -4px;
+}
+
+/*# sourceMappingURL=logo-podcast.css.map */
