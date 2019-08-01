@@ -73,12 +73,12 @@ EXTRA_MODEL_FIELDS = (
         {"upload_to": "uploads", "max_length": 150, "default": ""},
     ),
 
-    # CAMPO TRANSCRIÇÃO
+    # CAMPO SHORT DESCRIPTIONS
     (
-        "mezzanine.blog.models.BlogPost.transcription",
-        "mezzanine.core.fields.RichTextField",
-        ("Insira a transcrição ou algum conteúdo extra",),
-        {"blank": True, "null": True},
+        "mezzanine.blog.models.BlogPost.shortdesc",
+        "django.db.models.CharField",
+        ("Insira uma descrição curta",),
+        {"max_length": 200, "default": ""},
     ),
 
 
