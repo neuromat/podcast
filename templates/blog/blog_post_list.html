@@ -87,7 +87,11 @@
                 {% endeditable %}
 
                 {% block blog_post_list_post_content %}
-                    {% editable blog_post.content %}
+                    {% if blog_posts.shortdesc != '' %}
+                        {% autoescape off %}
+                            {{ blog_post.shortdesc }}
+                        {% endautoescape off %}
+                    {% else %}
                         {% autoescape off %}
                             {% if blog_posts.object_list.count <= 1 %}
                                 {% postLargeExcerpt blog_post.content %}
@@ -95,7 +99,7 @@
                                 {% postExcerpt blog_post.content %}
                             {% endif %}
                         {% endautoescape off %}
-                    {% endeditable %}
+                    {% endif %}
                 {% endblock %}
             </div>
             <div class="podcast-feed-plat-links">
