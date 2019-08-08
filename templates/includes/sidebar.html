@@ -9,7 +9,7 @@
             {% for recent_post in recent_posts %}
                 <!-- item -->
                 <div class="podcast-feed-item">
-                    <a class="podcast-feed-thumb" href="{{ recent_post.get_absolute_url }}" style="background-image:url('{{ MEDIA_URL }}{{ recent_post.featured_image }}')"></a>
+                    <a title="{{ recent_post.title }}" class="podcast-feed-thumb" href="{{ recent_post.get_absolute_url }}" style="background-image:url('{{ MEDIA_URL }}{{ recent_post.featured_image }}')"></a>
                     <div class="podcast-feed-info">
 
                         <h2>
@@ -19,9 +19,9 @@
                     </div>
                     <div class="podcast-feed-plat-links">
                         <ul class="podcast-avaiablein-list">
-                            <li><a href="#"><i class="fab fa-spotify"></i></a></li>
-                            <li><a href="#"><i class="fab fa-itunes"></i></a></li>
-                            <li><a href="https://soundcloud.com/a-matematica-do-cerebro"><i class="fab fa-soundcloud"></i></a></li>
+                            <li><a title="A Matemática do cérebro disponível no Spotify" href="#"><i class="fab fa-spotify"></i></a></li>
+                            <li><a title="A Matemática do cérebro disponível no iTunes - Apple Podcast" target="_blank" href="https://podcasts.apple.com/br/podcast/podcast-a-matem%C3%A1tica-do-c%C3%A9rebro/id1475111016?l=en"><i class="fab fa-itunes"></i></a></li>
+                            <li><a title="A Matemática do cérebro disponível no SoundCloud" href="https://soundcloud.com/a-matematica-do-cerebro"><i class="fab fa-soundcloud"></i></a></li>
                         </ul>
                     </div>
                 </div>

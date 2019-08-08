@@ -2,7 +2,7 @@
 <form action="{% url "search" %}" class="navbar-form navbar-right" role="search">
 
     <div class="form-group menu-search">
-        <input class="form-control" placeholder="{% trans "Busque um podcast" %}" type="text" name="q" value="{{ request.GET.q }}">
+        <input autocomplete="off" class="form-control" placeholder="{% trans "Busque um podcast" %}" type="text" name="q" value="{{ request.GET.q }}">
         <button type="submit" class="btn btn-primary btn-sm"> <span class="glyphicon glyphicon-search" aria-hidden="true">Buscar</span> </button>
     </div>
 

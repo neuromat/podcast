@@ -1,6 +1,5 @@
-
+// ROBOTO GOOGLE FONT IMPORT
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
 
 // CORES
 $cor-placeholder: #f3f3f3;
@@ -12,10 +11,9 @@ $cor-branca:#FFF;
 $cor-subtitulo: #ccc;
 $cor-footer: #1c4489;
 $cor-destaque: #febc28;
+$cor-borda-search-input: #626d7b;
 
-
-
-// MEDIA QUERIES
+// MEDIA QUERIES RULES
 
 // Smartphones and Tablets
 $mq-smartphones-portrait-landscape: "only screen and (min-device-width : 320px) and (max-device-width : 1024px)";
@@ -31,14 +29,14 @@ $mq-large-screens: "only screen and (min-device-width : 1910px) and (max-device-
     font-family: sans-serif;
   }
 
-  h1, h2, h3, h4, span, p, a, strong, li{
-    font-family: 'Roboto', sans-serif;
-  }
-
   html, body{
     margin: 0;
     padding: 0;
     background: #f5f5f5;
+  }
+
+  h1, h2, h3, h4, span, p, a, strong, li{
+    font-family: 'Roboto', sans-serif;
   }
 
   .titulo-sessao{
@@ -84,7 +82,6 @@ $mq-large-screens: "only screen and (min-device-width : 1910px) and (max-device-
         width: 85.5%;
       }
 
-
       h1{
         display: flex;
         align-items: center;
@@ -104,7 +101,7 @@ $mq-large-screens: "only screen and (min-device-width : 1910px) and (max-device-
   .nav-container{
     border-bottom: 1px solid #ccc;
     background: $cor-navbar-global;
-    height: 40px;
+    height: 45px;
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -115,20 +112,17 @@ $mq-large-screens: "only screen and (min-device-width : 1910px) and (max-device-
     display: flex;
     justify-content: space-between;
     width: 70%;
-    height: 40px;
+    height: 45px;
     margin: auto auto 30px auto;
-
-    //border: 1px solid red;
 
     ul{
         display: flex;
         align-items: center;
         width: 80%;
-        height: 40px;
+        height: 45px;
         margin: 0;
         padding: 0;
         list-style:none;
-        //padding-left: 100px;
 
         @media #{$mq-notebooks-desktop} {
           width: 100%;
@@ -146,9 +140,14 @@ $mq-large-screens: "only screen and (min-device-width : 1910px) and (max-device-
       .menu-search{
         display: flex;
         align-items: center;
-        height: 40px;
-
-
+        height: 45px;
+        input{
+          width: 350px;
+          border: 0.5px solid $cor-borda-search-input;
+          &::placeholder{
+            font-size: 0.9em;
+          }
+        }
         button{
           margin-left: 5px;
           background: $cor-footer;
@@ -816,14 +815,15 @@ $mq-large-screens: "only screen and (min-device-width : 1910px) and (max-device-
           }
 
           h3{
-            margin: 0;
+            margin: 0 0 10px 0;
             font-size: 1.3em;
             border-bottom: 1px solid white;
           }
 
-          p{
+          p, address{
             font-size: 0.8em;
             margin-bottom: 0px;
+            padding-bottom: 0;
           }
 
           a{

@@ -1,18 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap");
 * {
   box-sizing: border-box;
   font-family: sans-serif;
-}
-
-h1, h2, h3, h4, span, p, a, strong, li {
-  font-family: "Roboto", sans-serif;
 }
 
 html, body {
   margin: 0;
   padding: 0;
   background: #f5f5f5;
+}
+
+h1, h2, h3, h4, span, p, a, strong, li {
+  font-family: "Roboto", sans-serif;
 }
 
 .titulo-sessao {
@@ -75,7 +74,7 @@ header .main-header-content h1 small {
 .nav-container {
   border-bottom: 1px solid #ccc;
   background: #bac6d6;
-  height: 40px;
+  height: 45px;
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -86,14 +85,14 @@ nav.global-navigation {
   display: flex;
   justify-content: space-between;
   width: 70%;
-  height: 40px;
+  height: 45px;
   margin: auto auto 30px auto;
 }
 nav.global-navigation ul {
   display: flex;
   align-items: center;
   width: 80%;
-  height: 40px;
+  height: 45px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -113,7 +112,14 @@ nav.global-navigation ul li a {
 nav.global-navigation .menu-search {
   display: flex;
   align-items: center;
-  height: 40px;
+  height: 45px;
+}
+nav.global-navigation .menu-search input {
+  width: 350px;
+  border: 0.5px solid #626d7b;
+}
+nav.global-navigation .menu-search input::placeholder {
+  font-size: 0.9em;
 }
 nav.global-navigation .menu-search button {
   margin-left: 5px;
@@ -732,13 +738,14 @@ footer .footer-content .footer-info {
   }
 }
 footer .footer-content .footer-info h3 {
-  margin: 0;
+  margin: 0 0 10px 0;
   font-size: 1.3em;
   border-bottom: 1px solid white;
 }
-footer .footer-content .footer-info p {
+footer .footer-content .footer-info p, footer .footer-content .footer-info address {
   font-size: 0.8em;
   margin-bottom: 0px;
+  padding-bottom: 0;
 }
 footer .footer-content .footer-info a {
   color: white;
