@@ -5,7 +5,7 @@
         {% load blog_tags keyword_tags i18n %}
         {% blog_recent_posts 5 as recent_posts %}
         {% if recent_posts %}
-            <h3>{% trans "Recentes" %}</h3>
+            <h3>{% trans "Episódios recentes" %}</h3>
             {% for recent_post in recent_posts %}
                 <!-- item -->
                 <div class="podcast-feed-item">

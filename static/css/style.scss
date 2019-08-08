@@ -301,7 +301,7 @@ $mq-large-screens: "only screen and (min-device-width : 1910px) and (max-device-
 
     .podcast{
       width: 70%;
-      margin-right: 20px;
+      margin-right: 30px;
 
       @media #{$mq-smartphones-portrait-landscape} {
         width: 100%;
@@ -609,6 +609,10 @@ $mq-large-screens: "only screen and (min-device-width : 1910px) and (max-device-
       justify-content: flex-start;
       margin: 0;
       padding: 0;
+
+      h3{
+        font-size: 1.5em;
+      }
 
       @media #{$mq-notebooks-desktop} {
         h3{
@@ -1328,4 +1332,134 @@ ul.navbar-nav.mr-auto{
 // Removendo avaliação dos comentários
 .rating{
   display: none;
+}
+
+// SHAREBOX
+
+.share-box.active{
+    display: flex;
+}
+
+
+.share-box.share-box--desktop{}
+.modal-body-sharebox{
+  .share-box{
+    border: none;
+  }
+}
+
+
+.share-box{
+    position: absolute;
+    top: 45px;
+    width: 495px;
+    height: 230px;
+    padding: 15px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    background: white;
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    box-shadow: 1px 1px 6px #ccc;
+    border: 2px solid $cor-header;
+  @media #{$mq-smartphones-portrait-landscape} {
+    position: relative;
+    width: auto;
+    box-shadow: none;
+    -webkit-border-radius: none;
+    -moz-border-radius: none;
+    border-radius: none;
+    top: auto;
+  }
+
+}
+
+.share-box:after{
+    bottom: 99%;
+    left: 32%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.share-box:after {
+    border-color: rgba(136, 183, 213, 0);
+    border-bottom-color: white;
+    border-width: 15px;
+    margin-left: -30px;
+}
+
+.share-box:before {
+    border-color: rgba(194, 225, 245, 0);
+    border-bottom-color: white;
+    /*border-width: 36px;
+    margin-left: -36px; */
+}
+
+.share-box h3{
+    font-size: 0.9em;
+}
+
+.share-box .share-box-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.share-box .share-box-container .share-box-item{
+    min-width: 75px;
+    width: 95px;
+    height: 60px;
+    background-color: #f3f3f3;
+    flex-direction: column;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    margin: 10px;
+    a{
+      color: #333;
+      text-decoration: none !important;
+      &:focus{
+        text-decoration: none !important;
+      }
+    }
+    @media #{$mq-smartphones-portrait-landscape} {
+      height: 80px;
+      width: 90px;
+    }
+}
+
+.share-box .share-box-container .share-box-item:hover{
+    border: 1px solid #1c4489;
+    text-decoration: none;
+}
+
+.share-box .share-box-container .share-box-item i{
+    font-size: 1.4em;
+    color: #333;
+    @media #{$mq-smartphones-portrait-landscape} {
+      font-size: 2em;
+    }
+}
+
+.share-box .share-box-container .share-box-item span{
+    text-align: center;
+    font-size: 0.8em;
+    color: #333;
+}
+
+// MISC
+.modal-body-sharebox{
+  height: 350px;
 }
