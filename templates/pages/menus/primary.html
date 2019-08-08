@@ -15,16 +15,6 @@
             {% search_form %}
         {% endblock %}
 
-
-        <script>
-            $(document).ready(function(){
-                $('#shareBoxTrigger').click(function(){
-                    $('#shareBox').toggleClass('active');
-                })
-            })
-        </script>
-
-
         <div id="shareBox" class="share-box">
             <h3>Assinar</h3>
             <div class="share-box-container">
@@ -74,6 +64,13 @@
     </nav>
 </div>
 
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#shareBoxTrigger').click(function(){
+            $('#shareBox').toggleClass('active');
+        });
+    });
+</script>
 
 
 
