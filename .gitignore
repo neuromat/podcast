@@ -1,9 +1,11 @@
 *.pyc
 *.pyo
 *.db
-.DS_Store
-.coverage
-local_settings.py
+*.DS_Store
+.coverage*
 /static/media
-/theme/templatesDraft
 .idea
+__pycache__/
+geckodriver.log
+podcast/wsgi.py
+podcast/local_settings.py
