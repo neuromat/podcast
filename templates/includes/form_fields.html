@@ -1,0 +1,48 @@
+{% load i18n %}
+{% load mezzanine_tags %}
+
+{% nevercache %}
+    <input type="hidden" name="referrer" value="{{ request.META.HTTP_REFERER }}">
+    {% csrf_token %}
+{% endnevercache %}
+
+{% for field in form_for_fields %}
+    {% if field.is_hidden %}
+        {{ field }}
+    {% else %}
+        <div class="form-group form-group-comment-form input_{{ field.id_for_label }} {{ field.field.type }}
+    {% if field.errors %} has-error{% endif %}">
+            {% if field.label %}
+                {% if field.label == 'Comment' %}
+                    <label class="control-label" for="{{ field.auto_id }}"> Comentário </label>
+                {% elif field.label == 'Name' %}
+                    <label class="control-label" for="{{ field.auto_id }}">Nome</label>
+                {% else %}
+                    <label class="control-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+                {% endif %}
+            {% endif %}
+            {{ field }}
+            {% if field.errors %}
+                <p class="help-block small-help-block-podcast">
+                    {% for e in field.errors %}
+                        {% if not forloop.first %} / {% endif %}{{ e }}
+                    {% endfor %}
+                </p>
+            {% elif field.help_text %}
+                <p class="help-block small-help-block-podcast">
+                    {% if field.help_text == 'required' %}
+                        Obrigatório
+                    {% elif field.help_text == 'required (not published)' %}
+                        Obrigatório (Não será publicado)
+                    {% elif field.help_text == 'optional' %}
+                        Opcional
+                    {% else %}
+                        {{ field.help_text }}
+                    {% endif %}
+                </p>
+            {% elif field.field.required %}
+                <p class="help-block small-help-block-podcast">{% trans "Obrigatório" %}</p>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endfor %}

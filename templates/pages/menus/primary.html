@@ -1,13 +1,76 @@
-{% load pages_tags i18n %}
+{% load pages_tags mezzanine_tags i18n  %}
 
-<nav class="global-navigation desktop-only">
-    <ul>
-    <li><a href="/">Home</a></li>
-        {% for page in page_branch %}
-            {% if page.in_menu %}
-            <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
-            {% endif %}
-        {% endfor %}
+<div class="nav-container">
+    <nav class="global-navigation desktop-only" style="position:relative;">
+        <ul>
+            <li><a href="/">Home</a></li>
+            {% for page in page_branch %}
+                {% if page.in_menu %}
+                    <li> <a href="{{ page.get_absolute_url }}">{{ page.title }}</a> </li>
+                {% endif %}
+            {% endfor %}
+                <li><a style="cursor: pointer" id="shareBoxTrigger">Assinar / RSS</a></li>
+        </ul>
+        {% block navbar_search_form %}
+            {% search_form %}
+        {% endblock %}
 
-    </ul>
-</nav>
+        <div id="shareBox" class="share-box">
+            <h3>Assinar</h3>
+            <div class="share-box-container">
+                <a class="share-box-item spotify" href="https://open.spotify.com/show/5mlqTkoim4rg7apScVW5AM">
+                    <i class="fab fa-spotify"></i>
+                    <span>Spotify</span>
+                </a>
+
+                <a class="share-box-item spotify" href="https://podcasts.apple.com/br/podcast/podcast-a-matem%C3%A1tica-do-c%C3%A9rebro/id1475111016?l=en">
+                    <i class="fab fa-itunes"></i>
+                    <span>iTunes</span>
+                </a>
+
+                <a class="share-box-item spotify" href="https://www.soundcloud.com/a-matematica-do-cerebro">
+                    <i class="fab fa-soundcloud"></i>
+                    <span>SoundCloud</span>
+                </a>
+
+                <a class="share-box-item spotify" href="https://tunein.com/podcasts/Science-Podcasts/A-Matematica-do-Cerebro-p1237959/">
+                    <i class="fas fa-podcast"></i>
+                    <span>TuneIn</span>
+                </a>
+
+                <a class="share-box-item bullhorn" href="https://bullhorn.fm/podcastamatematicadocerebro">
+                    <i class="fas fa-bullhorn"></i>
+                    <span>Bullhorn</span>
+                </a>
+
+                <a class="share-box-item" href="https://www.stitcher.com/podcast/soundcloud-217/a-matematica-do-cerebro">
+                    <i class="fas fa-podcast"></i>
+                    <span>Stitcher</span>
+                </a>
+
+                <a class="share-box-item spotify" href="https://subscribebyemail.com/feeds.soundcloud.com/users/soundcloud:users:668777594/sounds.rss">
+                    <i class="far fa-envelope"></i>
+                    <span>E-mail</span>
+                </a>
+
+                <a class="share-box-item spotify" href="http://feeds.soundcloud.com/users/soundcloud:users:668777594/sounds.rss">
+                    <i class="fa fa-rss"></i>
+                    <span>Link RSS</span>
+                </a>
+            </div>
+
+        </div>
+
+    </nav>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#shareBoxTrigger').click(function(){
+            $('#shareBox').toggleClass('active');
+        });
+    });
+</script>
+
+
+

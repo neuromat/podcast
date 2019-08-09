@@ -1,0 +1,11 @@
+*.pyc
+*.pyo
+*.db
+*.DS_Store
+.coverage*
+/static/media
+.idea
+__pycache__/
+geckodriver.log
+podcast/wsgi.py
+podcast/local_settings.py

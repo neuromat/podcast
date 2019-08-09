@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% load i18n mezzanine_tags %} {% block meta_title %}{% trans "Search Results" %}{% endblock %} {% block extra_head %} {% endblock %}
+{% block main %}
+    <style>
+        .podcast-feed-info a{color: white}
+    </style>
+    <h2>{% block title %}{% trans "Resultados" %}{% endblock %} </h2>
+    {% if results.paginator.count == 0 %}
+        {% blocktrans %} Sem resultados para a pesquisa: {{ query }} {% endblocktrans %}
+    {% else %}
+        {% blocktrans with start=results.start_index end=results.end_index total=results.paginator.count %} Exibindo {{ start }} de {{ end }} de {{ total }} resultados para a pesquisa: {{ query }} {% endblocktrans %}
+    {% endif %}
+
+    <ul class="podcast-feed">
+
+        {% for result in results.object_list %} {% with result.get_absolute_url as result_url %}
+            <div class="podcast-feed-item">
+
+            {% if result.featured_image %}
+                <a class="podcast-feed-thumb" href="{{ result.get_absolute_url }}" style="background-image:url('{{ MEDIA_URL }}{{ result.featured_image }}')"></a>
+            {% endif %}
+
+            {% if result_url %}
+                <div class="podcast-feed-info">
+                <a href="{{ result.get_absolute_url }}"><h2>{{ result }}</h2></a>
+
+            {% else %}
+                <div class="podcast-feed-info">
+                <h2>{{ result }}</h2>
+
+            {% endif %}
+        {% if result.description != result|stringformat:"s" %}
+            <a href="{{ result.get_absolute_url }}">{{ result.description|truncatewords_html:20|safe }}</a>
+        {% endif %}
+
+        </div>
+        {% endwith %}
+        </div>
+        {% endfor %}
+    </ul>
+
+    {% pagination_for results %}
+{% endblock %}
+
+

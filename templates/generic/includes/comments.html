@@ -1,6 +1,6 @@
 {% load i18n mezzanine_tags comment_tags %}
 <div id="comments">
-<h3>{% trans "Comments" %}</h3>
+<h3 class="subtitulo">{% trans "Comentários" %}</h3>
 {% if settings.COMMENTS_DISQUS_SHORTNAME %}
 {% include "generic/includes/disqus_comments.html" %}
 {% else %}
@@ -14,7 +14,7 @@ $(function() {
 </script>
 <style>.input_id_honeypot {display:none !important;}</style>
 {% comment_thread object_for_comments %}
-<h3>{% trans "Novo comentário" %}</h3>
+<h3 class="subtitulo">{% trans "Novo comentário" %}</h3>
 <form method="post" id="comment" action="{{ comment_url }}#comment">
     {% if not request.POST.replied_to %}
     {% fields_for posted_comment_form %}
@@ -22,7 +22,7 @@ $(function() {
     {% fields_for unposted_comment_form %}
     {% endif %}
     <div class="form-actions">
-        <input class="btn btn-primary btn-lg" type="submit" value="{% trans "Comment" %}">
+        <input class="btn btn-podcast-color btn-default" type="submit" value="{% trans "Comentar" %}">
     </div>
 </form>
 {% endif %}

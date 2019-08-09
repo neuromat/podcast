@@ -1,23 +1,25 @@
+{% load mezzanine_tags %}
 <nav class=" mobile-only navbar navbar-expand-lg navbar-light navbar-podcast">
 {#  <a class="navbar-brand" href="#">Navbar</a>#}
 
-            <div class="logo-heading-container">
-                <div class="simbolo-podcast">
-                  <div class="elipse"></div>
-                  <div class="elipse"></div>
-                  <div class="elipse"></div>
-                </div>
+    <div class="logo-heading-container">
+        <div class="simbolo-podcast">
+          <div class="elipse"></div>
+          <div class="elipse"></div>
+          <div class="elipse"></div>
+        </div>
 
-                <div class="logo-heading">
-                    <small>Podcast</small>
-                    <h1>A Matemática do Cérebro</h1>
-                </div>
-            </div>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="logo-heading">
+            <small>Podcast</small>
+            <h1>A Matemática do Cérebro</h1>
+        </div>
+    </div>
+
+  <button id="mobileMenuToggleBtn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse mobile-menu-nav" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
         <li><a href="/">Home</a></li>
         {% for page in page_branch %}
@@ -25,7 +27,87 @@
             <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
             {% endif %}
         {% endfor %}
+        <li><a data-toggle="modal" data-target="#shareBoxModal" >Assinar / RSS</a></li>
     </ul>
+
+      {% block navbar_search_form %}
+        {% search_form %}
+      {% endblock %}
 
   </div>
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="shareBoxModal" tabindex="-1" role="dialog" aria-labelledby="shareBoxModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="shareBoxModal">Assinar</h5>
+        <button type="button" class="close modal-close-btn-trigger" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body modal-body-sharebox">
+        <!-- sharebox -->
+            <div class="share-box active">
+                <div class="share-box-container">
+                    <a class="share-box-item spotify" href="https://open.spotify.com/show/5mlqTkoim4rg7apScVW5AM">
+                        <i class="fab fa-spotify"></i>
+                        <span>Spotify</span>
+                    </a>
+
+                    <a class="share-box-item" href="https://podcasts.apple.com/br/podcast/podcast-a-matem%C3%A1tica-do-c%C3%A9rebro/id1475111016?l=en">
+                        <i class="fab fa-itunes"></i>
+                        <span>iTunes</span>
+                    </a>
+
+                    <a class="share-box-item" href="https://www.soundcloud.com/a-matematica-do-cerebro">
+                        <i class="fab fa-soundcloud"></i>
+                        <span>SoundCloud</span>
+                    </a>
+
+                    <a class="share-box-item" href="https://tunein.com/podcasts/Science-Podcasts/A-Matematica-do-Cerebro-p1237959/">
+                        <i class="fas fa-podcast"></i>
+                        <span>TuneIn</span>
+                    </a>
+
+                    <a class="share-box-item bullhorn" href="https://bullhorn.fm/podcastamatematicadocerebro">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>Bullhorn</span>
+                    </a>
+
+                    <a class="share-box-item" href="https://www.stitcher.com/podcast/soundcloud-217/a-matematica-do-cerebro">
+                        <i class="fas fa-podcast"></i>
+                        <span>Stitcher</span>
+                    </a>
+
+                    <a class="share-box-item" href="https://subscribebyemail.com/feeds.soundcloud.com/users/soundcloud:users:668777594/sounds.rss">
+                        <i class="far fa-envelope"></i>
+                        <span>E-mail</span>
+                    </a>
+
+                    <a class="share-box-item" href="http://feeds.soundcloud.com/users/soundcloud:users:668777594/sounds.rss">
+                        <i class="fa fa-rss"></i>
+                        <span>Link RSS</span>
+                    </a>
+                </div>
+
+            </div>
+        <!-- / sharebox -->
+      </div>
+      <div class="modal-footer">
+        <button class="modal-close-btn-trigger" type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.modal-close-btn-trigger').click(function(){
+            $('#mobileMenuToggleBtn').click();
+        });
+
+    })
+</script>

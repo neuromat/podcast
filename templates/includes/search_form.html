@@ -1,0 +1,27 @@
+{% load mezzanine_tags i18n %}
+<form action="{% url "search" %}" class="navbar-form navbar-right" role="search">
+
+    <div class="form-group menu-search">
+        <input autocomplete="off" class="form-control" placeholder="{% trans "Busque um podcast" %}" type="text" name="q" value="{{ request.GET.q }}">
+        <button type="submit" class="btn btn-primary btn-sm"> <span class="glyphicon glyphicon-search" aria-hidden="true">Buscar</span> </button>
+    </div>
+
+    {% if search_model_choices %}
+        {% if search_model_choices|length == 1 %}
+            <input type="hidden" name="type" value="{{ search_model_choices.0.1 }}">
+        {% else %}
+            <div class="form-group">
+                <select class="form-control" name="type">
+                    <option value="">{% trans "Everything" %}</option>
+                    {% for verbose_name, model in search_model_choices %}
+                        <option value="{{ model }}"
+                            {% if model == request.GET.type  %}selected{% endif %}>
+                            {{ verbose_name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endif %}
+    {% endif %}
+
+</form>

@@ -1,23 +1,32 @@
 {% extends "../base.html" %}
 {% load mezzanine_tags keyword_tags %}
-
-{% block meta_title %}{{ page.meta_title }}{% endblock %}
-
-{% block meta_keywords %}{% metablock %}
-{% keywords_for page as keywords %}
-{% for keyword in keywords %}
-    {% if not forloop.first %}, {% endif %}
-    {{ keyword }}
-{% endfor %}
-{% endmetablock %}{% endblock %}
-
-{% block meta_description %}{% metablock %}
-{{ page.description }}
-{% endmetablock %}{% endblock %}
-
-{% block title %}
-{% editable page.title %}{{ page.title }}{% endeditable %}
-{% endblock %}
-
 {% block main %}
+    <div class="single-page-container">
+        <div class="single" style="width: 70%;">
+            <div class="podcast" style="width:80%;">
+                <h2>
+                {% block title %}
+                    {% editable page.title %}{{ page.title }}{% endeditable %}
+                {% endblock %}
+                </h2>
+
+                {% block meta_keywords %}{% metablock %}
+                    {% keywords_for page as keywords %}
+                    {% for keyword in keywords %}
+                        {% if not forloop.first %}, {% endif %}
+                        {{ keyword }}
+                    {% endfor %}
+                {% endmetablock %}{% endblock %}
+
+
+                {% editable page.richtextpage.content %}
+                    {{ page.richtextpage.content|safe }}
+                {% endeditable %}
+
+
+
+            </div>
+        </div>
+        {% include "includes/sidebar.html" %}
+    </div>
 {% endblock %}

@@ -73,12 +73,12 @@ EXTRA_MODEL_FIELDS = (
         {"upload_to": "uploads", "max_length": 150, "default": ""},
     ),
 
-    # CAMPO TRANSCRIÇÃO
+    # CAMPO SHORT DESCRIPTIONS
     (
-        "mezzanine.blog.models.BlogPost.transcription",
-        "mezzanine.core.fields.RichTextField",
-        ("Insira a transcrição ou algum conteúdo extra",),
-        {"blank": True, "null": True},
+        "mezzanine.blog.models.BlogPost.shortdesc",
+        "django.db.models.CharField",
+        ("Insira uma descrição curta",),
+        {"max_length": 200, "default": ""},
     ),
 
 
@@ -90,6 +90,10 @@ EXTRA_MODEL_FIELDS = (
     #     {"blank": True, "default": 1},
     # ),
 )
+
+MIGRATION_MODULES = {
+   "blog": "migrations_mezzanine_blog",
+}
 
 # Setting to turn on featured images for blog posts. Defaults to False.
 #
@@ -157,17 +161,17 @@ FILE_UPLOAD_PERMISSIONS = 0o644
 DATABASES = {
     "default": {
         # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
-        "ENGINE": "django.db.backends.",
+        "ENGINE": "django.db.backends.sqlite3",
         # DB name or path to database file if using sqlite3.
-        "NAME": "",
+        "NAME": "db.sqlite3",
         # Not used with sqlite3.
-        "USER": "",
-        # Not used with sqlite3.
-        "PASSWORD": "",
-        # Set to empty string for localhost. Not used with sqlite3.
-        "HOST": "",
-        # Set to empty string for default. Not used with sqlite3.
-        "PORT": "",
+        # "USER": "",
+        # # Not used with sqlite3.
+        # "PASSWORD": "",
+        # # Set to empty string for localhost. Not used with sqlite3.
+        # "HOST": "",
+        # # Set to empty string for default. Not used with sqlite3.
+        # "PORT": "",
     }
 }
 

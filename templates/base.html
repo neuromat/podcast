@@ -4,10 +4,10 @@
 {% load blog_extras %}
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
     <meta name="description" content="{% block meta_description %}{% endblock %}">
-    <title>Podcast {% if settings.SITE_TITLE %} {{ settings.SITE_TITLE }}{% endif %}</title>
+    <title>{% if settings.SITE_TITLE %} {{ settings.SITE_TITLE }}{% endif %}</title>
     <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
 
     {% ifinstalled mezzanine.blog %}
@@ -53,15 +53,15 @@
 <!-- MOBILE MENU -->
 {% page_menu "pages/menus/mobile.html" %}
 
-<div class="app">
-    <!-- HEADER -->
-    {% include "includes/header.html" %}
-    <div class="main-content multiple-posts container-fluid">
-        <div class="container container-full">
-         {% block main %}{% endblock %}
-        </div>
+
+<!-- HEADER -->
+{% include "includes/header.html" %}
+<div class="main-content multiple-posts container-fluid">
+    <div class="container container-full">
+     {% block main %}{% endblock %}
     </div>
 </div>
+
 
 <div id="searchBoxContainer" class="search-box-container">
     <div class="search-form">

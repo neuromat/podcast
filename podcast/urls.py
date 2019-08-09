@@ -10,6 +10,7 @@ from mezzanine.conf import settings
 
 # Uncomment to use blog as home page. See also urlpatterns section below.
 from mezzanine.blog import views as blog_views
+from theme import views
 
 admin.autodiscover()
 
@@ -21,6 +22,7 @@ urlpatterns = i18n_patterns(
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
     url("^admin/", include(admin.site.urls)),
+    url("^pages/sobre/", direct_to_template, {"template": "pages/page.html"}, name="page"),
 )
 
 if settings.USE_MODELTRANSLATION:

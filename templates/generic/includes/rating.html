@@ -2,9 +2,9 @@
 
 <span id="rating-{{ rating_object.id }}">
     {% if rating_average %}
-    {% trans "Current rating" %}: {{ rating_average|floatformat }}
+    {% trans "Avaliação atual" %}: {{ rating_average|floatformat }}
     {% else %}
-    {% trans "Currently unrated" %}
+    {% trans "Ainda não avaliado" %}
     {% endif %}
 </span>
 
@@ -15,21 +15,7 @@
     {% endnevercache %}
 
     <ul class="radio radio-inline rating-as-form">{{ rating_form.as_ul }}</ul>
-    <input id="rateBtn" type="submit" class="btn btn-default btn-sm" value="{% trans "Rate" %}"
+    <input id="rateBtn" type="submit" class="btn btn-default btn-sm" value="{% trans "Avaliação" %}"
         onclick="return $(this.form).find('input:checked').length == 1;">
 </form>
-
-    <script>
-    $(document).ready(function(){
-        console.log('Ready');
-        $('#rateBtn').click(function(e){
-            e.preventDefault();
-
-            console.log('Rate!');
-        });
-    })
-
-    </script>
-
-
 {% endif %}

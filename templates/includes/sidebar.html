@@ -1,68 +1,32 @@
-        <div class="sidebar">
+{% load blog_extras %}
 
-    <!-- REPRESENTAÇÃO MODELO MODIFICADO PROPOSTO -->
-        <div class="podcast-feed">
-
-            <!-- item -->
-            <div class="podcast-feed-item">
-                <a class="podcast-feed-thumb" href="#" style="background-image:url('{{ MEDIA_URL }}{{ blog_post.featured_image }}')"></a>
-                <div class="podcast-feed-info">
-
-                        <h2>
-                            <a href="#">Titulo</a>
-                        </h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto assumenda et harum..</p>
-                </div>
-                <div class="podcast-feed-plat-links">
-                    <ul class="podcast-avaiablein-list">
-                        <li><a href="#"><i class="fab fa-spotify"></i></a></li>
-                        <li><a href="#"><i class="fab fa-itunes"></i></a></li>
-                        <li><a href="#"><i class="fas fa-play"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- / item -->
-
-            <!-- item -->
-            <div class="podcast-feed-item">
-                <a class="podcast-feed-thumb" href="#" style="background-image:url('{{ MEDIA_URL }}{{ blog_post.featured_image }}')"></a>
-                <div class="podcast-feed-info">
+<div class="sidebar">
+    <div class="podcast-feed"><!-- Recent Posts -->
+        {% load blog_tags keyword_tags i18n %}
+        {% blog_recent_posts 5 as recent_posts %}
+        {% if recent_posts %}
+            <h3>{% trans "Episódios recentes" %}</h3>
+            {% for recent_post in recent_posts %}
+                <!-- item -->
+                <div class="podcast-feed-item">
+                    <a title="{{ recent_post.title }}" class="podcast-feed-thumb" href="{{ recent_post.get_absolute_url }}" style="background-image:url('{{ MEDIA_URL }}{{ recent_post.featured_image }}')"></a>
+                    <div class="podcast-feed-info">
 
                         <h2>
-                            <a href="#">Titulo</a>
+                            <a href="{{ recent_post.get_absolute_url }}">{{ recent_post.title }}</a>
                         </h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto assumenda et harum..</p>
+                        {# <p>{% postShortExcerpt recent_post.description %}</p>#}
+                    </div>
+                    <div class="podcast-feed-plat-links">
+                        <ul class="podcast-avaiablein-list">
+                            <li><a title="A Matemática do cérebro disponível no Spotify" href="#"><i class="fab fa-spotify"></i></a></li>
+                            <li><a title="A Matemática do cérebro disponível no iTunes - Apple Podcast" target="_blank" href="https://podcasts.apple.com/br/podcast/podcast-a-matem%C3%A1tica-do-c%C3%A9rebro/id1475111016?l=en"><i class="fab fa-itunes"></i></a></li>
+                            <li><a title="A Matemática do cérebro disponível no SoundCloud" href="https://soundcloud.com/a-matematica-do-cerebro"><i class="fab fa-soundcloud"></i></a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="podcast-feed-plat-links">
-                    <ul class="podcast-avaiablein-list">
-                        <li><a href="#"><i class="fab fa-spotify"></i></a></li>
-                        <li><a href="#"><i class="fab fa-itunes"></i></a></li>
-                        <li><a href="#"><i class="fas fa-play"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- / item -->
-
-            <!-- item -->
-            <div class="podcast-feed-item">
-                <a class="podcast-feed-thumb" href="#" style="background-image:url('{{ MEDIA_URL }}{{ blog_post.featured_image }}')"></a>
-                <div class="podcast-feed-info">
-
-                        <h2>
-                            <a href="#">Titulo</a>
-                        </h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto assumenda et harum..</p>
-                </div>
-                <div class="podcast-feed-plat-links">
-                    <ul class="podcast-avaiablein-list">
-                        <li><a href="#"><i class="fab fa-spotify"></i></a></li>
-                        <li><a href="#"><i class="fab fa-itunes"></i></a></li>
-                        <li><a href="#"><i class="fas fa-play"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- / item -->
-
-        </div>
-
-        </div>
+                <!-- / item -->
+            {% endfor %}
+        {% endif %}
+    </div><!-- Recent Posts -->
+</div>
