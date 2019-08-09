@@ -134,7 +134,7 @@ nav.global-navigation .menu-search button:hover {
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 600px;
+  min-height: 510px;
 }
 @media only screen and (min-device-width : 320px) and (max-device-width : 1024px) {
   .main-content {
@@ -1334,6 +1334,11 @@ ul.navbar-nav.mr-auto li a {
 
 .modal-body-sharebox {
   height: 350px;
+}
+
+.photo-credits {
+  width: 100%;
+  font-style: italic;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -165,7 +165,7 @@ $mq-large-screens: "only screen and (min-device-width : 1910px) and (max-device-
     display: flex;
     flex-direction: column;
     width: 100%;
-    min-height: 600px;
+    min-height: 510px;
 
       @media #{$mq-smartphones-portrait-landscape} {
         width: 100%;
@@ -1462,4 +1462,9 @@ ul.navbar-nav.mr-auto{
 // MISC
 .modal-body-sharebox{
   height: 350px;
+}
+
+.photo-credits{
+  width: 100%;
+  font-style: italic;
 }

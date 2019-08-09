@@ -26,6 +26,5 @@ def postGallery(post, mediaurl):
 
     for i in Slider.objects.all():
         if i.post == post:
-             string += '<img class="post-gallery-item" width="100px" src="' + mediaurl + str(i.photo) + '" /> '
-            # string += '<div class="post-gallery-item" width="100px; height: 140px;" style="background-image:url(' + mediaurl + str(i.photo) + ')" ></div> '
+            string += '<img class="post-gallery-item" title="Foto:' + i.credit + '" width="100px" src="' + mediaurl + str(i.photo) + '" /> '
     return string

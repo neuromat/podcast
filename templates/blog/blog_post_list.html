@@ -87,14 +87,14 @@
                     {% block blog_post_list_post_content %}
                         {% if blog_posts.shortdesc != '' %}
                             {% autoescape off %}
-                                {{ blog_post.shortdesc }}
+                                <p>{{ blog_post.shortdesc }}</p>
                             {% endautoescape off %}
                         {% else %}
                             {% autoescape off %}
                                 {% if blog_posts.object_list.count <= 1 %}
-                                    {% postLargeExcerpt blog_post.content %}
+                                    <p>{% postLargeExcerpt blog_post.content %}</p>
                                 {% else %}
-                                    {% postExcerpt blog_post.content %}
+                                    <p>{% postExcerpt blog_post.content %}</p>
                                 {% endif %}
                             {% endautoescape off %}
                         {% endif %}
@@ -120,9 +120,10 @@
                     {% block blog_post_list_post_title %}
                         {% editable blog_post.title %}
                             <h2>
-                                <a title="{{ blog_post.title }}" href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+                              <a title="{{ blog_post.title }}" href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
                             </h2>
                         {% endeditable %}
+
                         <ul class="podcast-avaiablein-list">
                             <li><a title="A Matemática do cérebro disponível no Spotify"  target="_blank" href="https://open.spotify.com/show/5mlqTkoim4rg7apScVW5AM"><i class="fab fa-spotify"></i></a></li>
                             <li><a title="A Matemática do cérebro disponível no iTunes - Apple Podcast" target="_blank" href="https://podcasts.apple.com/br/podcast/podcast-a-matem%C3%A1tica-do-c%C3%A9rebro/id1475111016?l=en"><i class="fab fa-itunes"></i></a></li>

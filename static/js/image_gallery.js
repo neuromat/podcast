@@ -7,6 +7,7 @@ $(document).ready(function(){
     }
 
     let imageContainer = $('#imgContainer');
+    let imageCredits = $('#photoCredits');
     let modal = $('#exampleModal');
 
     // next and previus image control
@@ -17,10 +18,12 @@ $(document).ready(function(){
     // single image display function
     $('.post-gallery-item').click((e) => {
         let currentImage = $(e.target).attr('src');
+        let creditsInfo = $(e.target).attr('title');
         let id = $(e.target).attr('id');
 
         currentImageIndex = id.substr(id.length - 1);
         imageContainer.css('background-image', `url('${currentImage}'`);
+        imageCredits.html(creditsInfo);
         modal.modal('show');
     });
 
