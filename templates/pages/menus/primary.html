@@ -16,7 +16,12 @@
         {% endblock %}
 
         <div id="shareBox" class="share-box">
-            <h3>Assinar</h3>
+            <h3>
+                Assinar
+                <button id="shareBoxCloseBtn" type="button" class="close" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </h3>
             <div class="share-box-container">
                 <a class="share-box-item spotify" href="https://open.spotify.com/show/5mlqTkoim4rg7apScVW5AM">
                     <i class="fab fa-spotify"></i>
@@ -69,6 +74,11 @@
         $('#shareBoxTrigger').click(function(){
             $('#shareBox').toggleClass('active');
         });
+
+        $('#shareBoxCloseBtn').click(() => {
+            $('#shareBox').removeClass('active');
+        })
+
     });
 </script>
 
