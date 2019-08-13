@@ -92,7 +92,7 @@ EXTRA_MODEL_FIELDS = (
 )
 
 MIGRATION_MODULES = {
-   "blog": "migrations_mezzanine_blog",
+   "blog": "migrations.external.blog",
 }
 
 # Setting to turn on featured images for blog posts. Defaults to False.
