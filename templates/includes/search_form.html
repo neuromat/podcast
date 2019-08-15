@@ -2,8 +2,8 @@
 <form action="{% url "search" %}" class="navbar-form navbar-right" role="search">
 
     <div class="form-group menu-search">
-        <input autocomplete="off" class="form-control" placeholder="{% trans "Busque um podcast" %}" type="text" name="q" value="{{ request.GET.q }}">
-        <button type="submit" class="btn btn-primary btn-sm"> <span class="glyphicon glyphicon-search" aria-hidden="true">Buscar</span> </button>
+        <input autocomplete="off" aria-label="Palavra-chave" class="form-control" placeholder="{% trans "Busque um podcast" %}" type="text" name="q" value="{{ request.GET.q }}">
+        <button type="submit" aria-label="Buscar" class="btn btn-primary btn-sm"> <span class="glyphicon glyphicon-search" aria-hidden="true">Buscar</span> </button>
     </div>
 
     {% if search_model_choices %}
