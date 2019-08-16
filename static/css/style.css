@@ -1055,6 +1055,7 @@ ul.navbar-nav.mr-auto li a {
   opacity: 0.8;
 }
 .podcast-feed .podcast-feed-item .podcast-feed-info {
+  min-width: 380px;
   height: 160px;
   color: white;
   box-sizing: border-box;
@@ -1233,7 +1234,7 @@ ul.navbar-nav.mr-auto li a {
 }
 .share-box:after, .share-box:before {
   bottom: 99%;
-  left: 22%;
+  left: 10%;
   content: " ";
   height: 0;
   width: 0;

@@ -1128,6 +1128,7 @@ ul.navbar-nav.mr-auto{
     }
 
     .podcast-feed-info{
+      min-width: 380px;
       height: 160px;
       color: white;
       box-sizing: border-box;
@@ -1325,7 +1326,7 @@ ul.navbar-nav.mr-auto{
 
   &:after, &:before {
     bottom: 99%;
-    left: 22%;
+    left: 10%;
     content: " ";
     height: 0;
     width: 0;
