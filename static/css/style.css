@@ -1322,6 +1322,26 @@ ul.navbar-nav.mr-auto li a {
   border: 1px solid #1c4489;
   text-decoration: none;
 }
+.share-box .secondary-platforms {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: auto;
+}
+.share-box .secondary-platforms p {
+  margin: 0 0 10px 0;
+}
+.share-box .secondary-platforms .secondary-platform-item {
+  display: flex;
+  width: 100%;
+  padding: 3px 5px;
+}
+.share-box .secondary-platforms .secondary-platform-item:hover {
+  background: #f3f3f3;
+}
+.share-box .secondary-platforms .secondary-platform-item .platform-sec-icon {
+  margin-right: 10px;
+}
 .share-box p.compatibilidade-issues {
   text-align: center;
   margin-top: 5px;
