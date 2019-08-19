@@ -13,6 +13,7 @@ $cor-subtitulo: #ccc;
 $cor-footer: #1c4489;
 $cor-destaque: #febc28;
 $cor-borda-search-input: #626d7b;
+$cor-link-default: #006699;
 
 // MEDIA QUERIES RULES
 
@@ -194,6 +195,7 @@ nav.global-navigation{
     @media #{$mq-smartphones-portrait-landscape} {
       flex-direction: column;
     }
+
     .podcast{
       display: flex;
       flex-direction: column;
@@ -263,6 +265,8 @@ nav.global-navigation{
     position: relative;
     flex-direction: row !important;
 
+
+
     &:first-child{
       margin-left: 0px;
     }
@@ -293,10 +297,10 @@ nav.global-navigation{
   display: flex;
   justify-content: space-between;
   .podcast{
-    width: 70%;
+    //width: 70%;
     margin-right: 30px;
     @media #{$mq-smartphones-portrait-landscape} {
-      width: 100%;
+      width: 100% !important;
     }
     .podcast-info{
       p{
@@ -1128,6 +1132,7 @@ ul.navbar-nav.mr-auto{
     }
 
     .podcast-feed-info{
+      min-width: 380px;
       height: 160px;
       color: white;
       box-sizing: border-box;
@@ -1307,7 +1312,7 @@ ul.navbar-nav.mr-auto{
   position: absolute;
   top: 45px;
   width: 495px;
-  height: 230px;
+  height: 310px;
   padding: 15px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -1325,7 +1330,7 @@ ul.navbar-nav.mr-auto{
 
   &:after, &:before {
     bottom: 99%;
-    left: 22%;
+    left: 10%;
     content: " ";
     height: 0;
     width: 0;
@@ -1388,7 +1393,7 @@ ul.navbar-nav.mr-auto{
             }
 
             i{
-              font-size: 1.4em;
+              font-size: 1.8em;
               color: #333;
               @media #{$mq-smartphones-portrait-landscape} {
                 font-size: 2em;
@@ -1412,6 +1417,37 @@ ul.navbar-nav.mr-auto{
             }
         }
     }
+
+    .secondary-platforms{
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        margin: auto;
+        p {
+          margin: 0 0 10px 0;
+        }
+
+        .secondary-platform-item {
+            display: flex;
+            width: 100%;
+            padding: 3px 5px;
+            &:hover{
+                background: #f3f3f3;
+            }
+
+            .platform-sec-icon{
+              margin-right: 10px;
+            }
+        }
+    }
+
+    p.compatibilidade-issues{
+      text-align: center;
+      margin-top: 5px;
+      a{
+        color: $cor-link-default;
+      }
+    }
 }
 
 
@@ -1423,4 +1459,13 @@ ul.navbar-nav.mr-auto{
 .photo-credits{
   width: 100%;
   font-style: italic;
+}
+
+
+//FIXES
+
+.podcast.podcast-page{
+  h2, h3{
+    margin-bottom: 30px;
+  }
 }

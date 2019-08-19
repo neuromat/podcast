@@ -256,12 +256,11 @@ nav.global-navigation .menu-search button:hover {
   justify-content: space-between;
 }
 .single .podcast {
-  width: 70%;
   margin-right: 30px;
 }
 @media only screen and (min-device-width : 320px) and (max-device-width : 1024px) {
   .single .podcast {
-    width: 100%;
+    width: 100% !important;
   }
 }
 .single .podcast .podcast-info p {
@@ -1055,6 +1054,7 @@ ul.navbar-nav.mr-auto li a {
   opacity: 0.8;
 }
 .podcast-feed .podcast-feed-item .podcast-feed-info {
+  min-width: 380px;
   height: 160px;
   color: white;
   box-sizing: border-box;
@@ -1216,7 +1216,7 @@ ul.navbar-nav.mr-auto li a {
   position: absolute;
   top: 45px;
   width: 495px;
-  height: 230px;
+  height: 310px;
   padding: 15px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -1233,7 +1233,7 @@ ul.navbar-nav.mr-auto li a {
 }
 .share-box:after, .share-box:before {
   bottom: 99%;
-  left: 22%;
+  left: 10%;
   content: " ";
   height: 0;
   width: 0;
@@ -1298,7 +1298,7 @@ ul.navbar-nav.mr-auto li a {
   text-decoration: none !important;
 }
 .share-box .share-box-container .share-box-item i {
-  font-size: 1.4em;
+  font-size: 1.8em;
   color: #333;
 }
 @media only screen and (min-device-width : 320px) and (max-device-width : 1024px) {
@@ -1321,6 +1321,33 @@ ul.navbar-nav.mr-auto li a {
   border: 1px solid #1c4489;
   text-decoration: none;
 }
+.share-box .secondary-platforms {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: auto;
+}
+.share-box .secondary-platforms p {
+  margin: 0 0 10px 0;
+}
+.share-box .secondary-platforms .secondary-platform-item {
+  display: flex;
+  width: 100%;
+  padding: 3px 5px;
+}
+.share-box .secondary-platforms .secondary-platform-item:hover {
+  background: #f3f3f3;
+}
+.share-box .secondary-platforms .secondary-platform-item .platform-sec-icon {
+  margin-right: 10px;
+}
+.share-box p.compatibilidade-issues {
+  text-align: center;
+  margin-top: 5px;
+}
+.share-box p.compatibilidade-issues a {
+  color: #006699;
+}
 
 .modal-body-sharebox {
   height: 350px;
@@ -1329,6 +1356,10 @@ ul.navbar-nav.mr-auto li a {
 .photo-credits {
   width: 100%;
   font-style: italic;
+}
+
+.podcast.podcast-page h2, .podcast.podcast-page h3 {
+  margin-bottom: 30px;
 }
 
 /*# sourceMappingURL=style.css.map */

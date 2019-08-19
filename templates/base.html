@@ -4,9 +4,10 @@
 {% load blog_extras %}
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
     <meta name="description" content="{% block meta_description %}{% endblock %}">
+
     <title>{% if settings.SITE_TITLE %} {{ settings.SITE_TITLE }}{% endif %}</title>
     <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
 
@@ -17,7 +18,7 @@
 
     {% compress css %}
         <link href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
-        <link rel="stylesheet" href="{% static "vendor/fontawesome-free/css/all.css" %}">
+        <link rel="stylesheet" href="{% static "vendor/fontawesome-free/css/all.min.css" %}">
         <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
         <link rel="stylesheet" href="{% static "css/style.css" %}">
         {% if LANGUAGE_BIDI %}
@@ -33,8 +34,8 @@
     {% endcompress %}
 
     {% compress js %}
-        <script src="{% static "vendor/jquery/jquery.js" %}"></script>
-        <script src="{% static "vendor/bootstrap/js/bootstrap.js" %}"></script>
+        <script src="{% static "vendor/jquery/jquery.min.js" %}"></script>
+        <script src="{% static "vendor/bootstrap/js/bootstrap.min.js" %}"></script>
 
 
         {% block extra_js %}{% endblock %}

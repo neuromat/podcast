@@ -1,9 +1,9 @@
-{% extends "../base.html" %}
+{% extends "pages/page.html" %}
 {% load mezzanine_tags keyword_tags %}
 {% block main %}
     <div class="single-page-container">
         <div class="single">
-            <div class="podcast podcast-page" style="width:80%;">
+            <div class="podcast podcast-page">
                 <h2>
                 {% block title %}
                     {% editable page.title %}{{ page.title }}{% endeditable %}
@@ -22,11 +22,8 @@
 
 
                 {% editable page.richtextpage.content %}
-                    {{ page.richtextpage.content|safe }}
+                    {{ page.richtextpage.content|richtext_filters }}
                 {% endeditable %}
-
-
-
             </div>
         </div>
         {% include "includes/sidebar.html" %}

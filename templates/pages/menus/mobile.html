@@ -15,7 +15,7 @@
         </div>
     </div>
 
-  <button id="mobileMenuToggleBtn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button id="mobileMenuToggleBtn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Navegação">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -24,7 +24,9 @@
         <li><a href="/">Home</a></li>
         {% for page in page_branch %}
             {% if page.in_menu %}
-            <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
+                {% if page.title != 'Compatibilidade' %}
+                    <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
+                {% endif %}
             {% endif %}
         {% endfor %}
         <li><a data-toggle="modal" data-target="#shareBoxModal" >Assinar / RSS</a></li>
@@ -43,7 +45,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="shareBoxModal">Assinar</h5>
-        <button type="button" class="close modal-close-btn-trigger" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close modal-close-btn-trigger" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -90,13 +92,18 @@
                         <i class="fa fa-rss"></i>
                         <span>Link RSS</span>
                     </a>
+
+                    <a class="share-box-item" href="/pages/compatibilidade">
+                        <i class="fas fa-podcast"></i>
+                        <span>Rhythmbox</span>
+                    </a>
                 </div>
 
             </div>
         <!-- / sharebox -->
       </div>
       <div class="modal-footer">
-        <button class="modal-close-btn-trigger" type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button aria-label="Fechar" class="modal-close-btn-trigger" type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>
