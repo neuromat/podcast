@@ -6,7 +6,9 @@
             <li><a href="/">Home</a></li>
             {% for page in page_branch %}
                 {% if page.in_menu %}
+                    {% if page.title != 'Compatibilidade' %}
                     <li> <a href="{{ page.get_absolute_url }}">{{ page.title }}</a> </li>
+                    {% endif %}
                 {% endif %}
             {% endfor %}
             <li>
@@ -58,6 +60,44 @@
                             <i class="fa fa-rss"></i>
                             <span>Link RSS</span>
                         </a>
+                    </div>
+                    <!-- <p class="compatibilidade-issues"><a href="">Utilizando outras plataformas</a></p> -->
+
+                    <style>
+                        .secondary-platforms{
+                            display: flex;
+                            flex-direction: column;
+                            width: 95%;
+                            margin: auto;
+                        }
+
+                        .secondary-platforms p{
+                            margin: 0 0 10px 0;
+                        }
+
+                        .secondary-platform-item {
+                            display: flex;
+                            width: 100%;
+                            padding: 3px 5px;
+                        }
+
+                        .secondary-platform-item:hover{
+                            background: #f3f3f3;
+                        }
+
+                        .secondary-platform-item .platform-sec-icon{
+                            margin-right: 10px;
+                        }
+                    </style>
+
+                    <div class="secondary-platforms">
+                        <p>Outras plataformas</p>
+                        <div class="secondary-platform-item">
+                            <div class="platform-sec-icon">
+                                <i class="fa fa-rss"></i>
+                            </div>
+                            <a href="/pages/compatibilidade">Rythmbox</a>
+                        </div>
                     </div>
                 </div>
             </li>
