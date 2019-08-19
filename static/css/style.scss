@@ -297,10 +297,10 @@ nav.global-navigation{
   display: flex;
   justify-content: space-between;
   .podcast{
-    width: 70%;
+    //width: 70%;
     margin-right: 30px;
     @media #{$mq-smartphones-portrait-landscape} {
-      width: 100%;
+      width: 100% !important;
     }
     .podcast-info{
       p{

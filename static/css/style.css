@@ -256,12 +256,11 @@ nav.global-navigation .menu-search button:hover {
   justify-content: space-between;
 }
 .single .podcast {
-  width: 70%;
   margin-right: 30px;
 }
 @media only screen and (min-device-width : 320px) and (max-device-width : 1024px) {
   .single .podcast {
-    width: 100%;
+    width: 100% !important;
   }
 }
 .single .podcast .podcast-info p {
