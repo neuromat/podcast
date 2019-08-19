@@ -24,7 +24,9 @@
         <li><a href="/">Home</a></li>
         {% for page in page_branch %}
             {% if page.in_menu %}
-            <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
+                {% if page.title != 'Compatibilidade' %}
+                    <li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
+                {% endif %}
             {% endif %}
         {% endfor %}
         <li><a data-toggle="modal" data-target="#shareBoxModal" >Assinar / RSS</a></li>
