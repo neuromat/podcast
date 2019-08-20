@@ -741,7 +741,7 @@ footer .footer-content .footer-info h3 {
 }
 footer .footer-content .footer-info p, footer .footer-content .footer-info address {
   font-size: 0.8em;
-  margin-bottom: 0px;
+  margin-bottom: -6px;
   padding-bottom: 0;
 }
 footer .footer-content .footer-info a {
@@ -1347,6 +1347,11 @@ ul.navbar-nav.mr-auto li a {
 }
 .share-box p.compatibilidade-issues a {
   color: #006699;
+}
+
+.license-footer-info {
+  margin-top: 10px;
+  line-height: 13pt !important;
 }
 
 .modal-body-sharebox {
