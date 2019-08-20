@@ -795,7 +795,7 @@ footer {
 
       p, address {
         font-size: 0.8em;
-        margin-bottom: 0px;
+        margin-bottom: -6px;
         padding-bottom: 0;
       }
 
@@ -1452,6 +1452,13 @@ ul.navbar-nav.mr-auto{
 
 
 // MISC
+
+
+.license-footer-info{
+  margin-top: 10px;
+  line-height: 13pt !important;
+}
+
 .modal-body-sharebox{
   height: 350px;
 }
