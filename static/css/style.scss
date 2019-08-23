@@ -1387,11 +1387,13 @@ ul.navbar-nav.mr-auto{
             a{
               color: #333;
               text-decoration: none !important;
+              position: relative;
+
               &:focus{
                 text-decoration: none !important;
               }
             }
-
+          
             i{
               font-size: 1.8em;
               color: #333;

@@ -1293,6 +1293,7 @@ ul.navbar-nav.mr-auto li a {
 .share-box .share-box-container .share-box-item a {
   color: #333;
   text-decoration: none !important;
+  position: relative;
 }
 .share-box .share-box-container .share-box-item a:focus {
   text-decoration: none !important;
