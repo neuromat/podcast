@@ -1013,7 +1013,8 @@ ul.navbar-nav.mr-auto li a {
 }
 @media only screen and (min-device-width : 1910px) and (max-device-width : 2900px) {
   .podcast-feed .podcast-feed-item.singlecase .podcast-feed-info h2 {
-    font-size: 1.4em;
+    font-size: 1.3em;
+    line-height: 22pt;
   }
 }
 .podcast-feed .podcast-feed-item {

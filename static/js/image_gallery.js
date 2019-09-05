@@ -1,45 +1,47 @@
 $(document).ready(function(){
+
+    const images = $('.post-gallery-item');
+    // Sequential image gallery
+    images.map( (index, el) => $(el).attr('id', 'image'+index));
+
+    const container = $('#imgContainer');
+
     let currentImageIndex = 0;
-    let images = $('.post-gallery-item');
-
-    if(images.length === 0){
-        $('#imageGalleryTitle').hide();
-    }
-
-    let imageContainer = $('#imgContainer');
     let imageCredits = $('#photoCredits');
     let modal = $('#exampleModal');
 
-    // next and previus image control
-    $('#next, #prev').click(function(e){
-        switchImageControl(e.target.id);
-    });
+    // show or hiding image gallery, adds event listeners to images if exist.
+    images.length === 0 ? $('#imageGalleryTitle').hide() : $.makeArray(images).forEach(a => a.addEventListener("click", e => openImage(e)));
+
+    // next and previous image control
+    $('#next, #prev').click(e => switchImageControl(e.target.id));
 
     // single image display function
-    $('.post-gallery-item').click((e) => {
-        let currentImage = $(e.target).attr('src');
-        let creditsInfo = $(e.target).attr('title');
-        let id = $(e.target).attr('id');
+    function openImage(e){
+
+        let image = $(e.target);
+        let id = image.attr('id');
 
         currentImageIndex = id.substr(id.length - 1);
-        imageContainer.css('background-image', `url('${currentImage}'`);
-        imageCredits.html(creditsInfo);
+        container.css('background-image', `url('${image.attr('src')}'`);
+        imageCredits.html(image.attr('title'));
         modal.modal('show');
-    });
+    }
 
     // Change image displayed by gallery
     function switchImage(url){
-        $('#imgContainer').css('background-image', `url('${url}'`);
+       $('#imgContainer').css('background-image', `url('${url}'`);
     }
 
     // Control of image change sequence
     function switchImageControl(caller){
         if(caller === 'next'){
-              if(currentImageIndex !== images.length - 1){
+              let arr =  $.makeArray((images));
+
+              if(Number(currentImageIndex) !== arr.indexOf(arr[arr.length - 1])){
                   currentImageIndex++;
                   // set new image
-                  let newsrc = $('#image'+currentImageIndex).attr('src');
-                  switchImage(newsrc);
+                  switchImage($('#image' + currentImageIndex).attr('src'));
               }
               return
         }
@@ -47,14 +49,8 @@ $(document).ready(function(){
         // caller was prev btn, check gallery number limit.
         if(parseInt(currentImageIndex) !== 0){
             currentImageIndex--;
-            // Setando nova imagem no display
-            let newsrc = $('#image'+currentImageIndex).attr('src');
-            switchImage(newsrc);
+            // set new image to display
+            switchImage($('#image'+currentImageIndex).attr('src'));
         }
     }
-
-    // Sequential image gallery
-    images.map( (index, el) => {
-        $(el).attr('id', 'image'+index);
-    });
 });

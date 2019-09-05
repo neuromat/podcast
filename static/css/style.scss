@@ -1092,7 +1092,8 @@ ul.navbar-nav.mr-auto{
 
       @media #{$mq-large-screens} {
         h2{
-          font-size: 1.4em;
+          font-size: 1.3em;
+          line-height: 22pt;
         }
       }
     }
@@ -1393,7 +1394,7 @@ ul.navbar-nav.mr-auto{
                 text-decoration: none !important;
               }
             }
-          
+
             i{
               font-size: 1.8em;
               color: #333;
