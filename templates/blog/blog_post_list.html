@@ -73,7 +73,8 @@
     <div class="podcast-feed">
         {% for blog_post in blog_posts.object_list %}
             <!-- item -->
-            <div class="podcast-feed-item {% if blog_posts.object_list.count <= 3 %} singlecase {% endif %}">
+            <!-- <div class="podcast-feed-item {% if blog_posts.object_list.count <= 3 %} singlecase {% endif %}"> -->
+            <div class="podcast-feed-item singlecase">
                 <a title="{{ blog_post.title }}" class="podcast-feed-thumb" href="{{ blog_post.get_absolute_url }}" style="background-image:url('{{ MEDIA_URL }}{{ blog_post.featured_image }}')"></a>
                 <div class="podcast-feed-info">
                     {% editable blog_post.title %}
