@@ -1,7 +1,5 @@
-{% load mezzanine_tags %}
+{% load mezzanine_tags blog_extras %}
 <nav class=" mobile-only navbar navbar-expand-lg navbar-light navbar-podcast">
-{#  <a class="navbar-brand" href="#">Navbar</a>#}
-
     <div class="logo-heading-container">
         <div class="simbolo-podcast">
           <div class="elipse"></div>
@@ -53,50 +51,9 @@
         <!-- sharebox -->
             <div class="share-box active">
                 <div class="share-box-container">
-                    <a class="share-box-item spotify" href="https://open.spotify.com/show/5mlqTkoim4rg7apScVW5AM">
-                        <i class="fab fa-spotify"></i>
-                        <span>Spotify</span>
-                    </a>
-
-                    <a class="share-box-item" href="https://podcasts.apple.com/br/podcast/podcast-a-matem%C3%A1tica-do-c%C3%A9rebro/id1475111016?l=en">
-                        <i class="fab fa-itunes"></i>
-                        <span>iTunes</span>
-                    </a>
-
-                    <a class="share-box-item" href="https://www.soundcloud.com/a-matematica-do-cerebro">
-                        <i class="fab fa-soundcloud"></i>
-                        <span>SoundCloud</span>
-                    </a>
-
-                    <a class="share-box-item" href="https://tunein.com/podcasts/Science-Podcasts/A-Matematica-do-Cerebro-p1237959/">
-                        <i class="fas fa-podcast"></i>
-                        <span>TuneIn</span>
-                    </a>
-
-                    <a class="share-box-item bullhorn" href="https://bullhorn.fm/podcastamatematicadocerebro">
-                        <i class="fas fa-bullhorn"></i>
-                        <span>Bullhorn</span>
-                    </a>
-
-                    <a class="share-box-item" href="https://www.stitcher.com/podcast/soundcloud-217/a-matematica-do-cerebro">
-                        <i class="fas fa-podcast"></i>
-                        <span>Stitcher</span>
-                    </a>
-
-                    <a class="share-box-item" href="https://subscribebyemail.com/feeds.soundcloud.com/users/soundcloud:users:668777594/sounds.rss">
-                        <i class="far fa-envelope"></i>
-                        <span>E-mail</span>
-                    </a>
-
-                    <a class="share-box-item" href="http://feeds.soundcloud.com/users/soundcloud:users:668777594/sounds.rss">
-                        <i class="fa fa-rss"></i>
-                        <span>Link RSS</span>
-                    </a>
-
-                    <a class="share-box-item" href="/pages/compatibilidade">
-                        <i class="fas fa-podcast"></i>
-                        <span>Rhythmbox</span>
-                    </a>
+                    {% autoescape off %}
+                        {% podcast_channels %}
+                    {% endautoescape %}
                 </div>
 
             </div>
@@ -115,6 +72,5 @@
         $('.modal-close-btn-trigger').click(function(){
             $('#mobileMenuToggleBtn').click();
         });
-
-    })
+    });
 </script>
