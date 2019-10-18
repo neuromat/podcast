@@ -72,19 +72,6 @@
 
                         <div class="post-image-gallery">
                             <div class="post-image-gallery-item">
-                            {% if blog_post.get_absolute_url == '/episodio-2-podcast-a-matematica-do-cerebro/' %}
-                                <img class="post-gallery-item"  width="100px" src="https://podcast.numec.prp.usp.br/static/media/uploads/imagem_ep2_1.jpeg" />
-                                <img class="post-gallery-item"  width="100px" src="https://podcast.numec.prp.usp.br/static/media/uploads/imagem_ep2_2.jpeg" />
-                                <img class="post-gallery-item"  width="100px" src="https://podcast.numec.prp.usp.br/static/media/uploads/imagem_ep2_3.jpeg" />
-                                <img class="post-gallery-item"  width="100px" src="https://podcast.numec.prp.usp.br/static/media/uploads/imagem_ep2_4.jpeg" />
-                                <img class="post-gallery-item"  width="100px" src="https://podcast.numec.prp.usp.br/static/media/uploads/imagem_ep2_5.jpeg" />
-                                <img class="post-gallery-item"  width="100px" src="https://podcast.numec.prp.usp.br/static/media/uploads/imagem_ep2_6.jpeg" />
-                                <img class="post-gallery-item"  width="100px" src="https://podcast.numec.prp.usp.br/static/media/uploads/imagem_ep2_7.jpeg" />
-                                <img class="post-gallery-item"  width="100px" src="https://podcast.numec.prp.usp.br/static/media/uploads/imagem_ep2_8.jpeg" />
-                                <img class="post-gallery-item"  width="100px" src="https://podcast.numec.prp.usp.br/static/media/uploads/imagem_ep2_9.jpeg" />
-                            {% endif %}
-                            {# <img class="post-gallery-item" title="Foto:' + i.credit + '" width="100px" src="' + mediaurl + str(i.photo) + '" />#}
-
                                 {% autoescape off %}
                                     {% postGallery blog_post MEDIA_URL %}
                                 {% endautoescape %}
