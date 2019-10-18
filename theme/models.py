@@ -6,9 +6,6 @@ class Slider(models.Model):
     photo = models.ImageField()
     credit = models.CharField(max_length=100, default='')
 
-    # def __str__(self):
-    #     return self.photo
-
     class Meta:
         verbose_name = 'Imagem galeria'
         verbose_name_plural = 'Imagens galeria'
