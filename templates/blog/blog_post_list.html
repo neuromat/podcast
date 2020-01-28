@@ -75,7 +75,16 @@
             <!-- item -->
             <!-- <div class="podcast-feed-item {% if blog_posts.object_list.count <= 3 %} singlecase {% endif %}"> -->
             <div class="podcast-feed-item singlecase">
+                {% if blog_post.featured_image %}
                 <a title="{{ blog_post.title }}" class="podcast-feed-thumb" href="{{ blog_post.get_absolute_url }}" style="background-image:url('{{ MEDIA_URL }}{{ blog_post.featured_image }}')"></a>
+                {% else %}
+                    <a
+                            title="{{ blog_post.title }}"
+                            class="podcast-feed-thumb"
+                            href="{{ blog_post.get_absolute_url }}" style="background-image:url('{{ STATIC_URL }}/img/image_placeholder.jpg')">
+                    
+                    </a>
+                {% endif %}
                 <div class="podcast-feed-info">
                     {% editable blog_post.title %}
                         <h2>
